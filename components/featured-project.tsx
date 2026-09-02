@@ -36,7 +36,7 @@ function FlowStep({
         <Icon size={20} strokeWidth={1.8} />
       </div>
       <div className="mt-2 text-[12px] font-semibold leading-tight text-foreground">{label}</div>
-      {detail ? <div className="mt-1 text-[10px] leading-tight text-muted">{detail}</div> : null}
+      {detail ? <div className="mt-1 text-[11px] leading-tight text-muted">{detail}</div> : null}
     </div>
   )
 }
@@ -58,7 +58,7 @@ function BankVisual() {
         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#e9f1fb] text-[#2e5f95]">✓</span>
         <div>
           <div className="text-[13px] font-semibold text-foreground">100건 동시 송금 테스트</div>
-          <div className="mt-0.5 text-[11px] text-muted">최종 잔액 정합성 검증</div>
+          <div className="mt-0.5 text-[12px] text-muted">최종 잔액 정합성 검증</div>
         </div>
       </div>
     </div>
@@ -108,7 +108,7 @@ function AirBotVisual() {
 
                 <div className="min-w-0">
                   <div className="text-[13px] font-semibold text-foreground">{step.title}</div>
-                  <div className="mt-0.5 break-words text-[10px] leading-[1.45] text-muted">
+                  <div className="mt-0.5 break-words text-[11px] leading-[1.5] text-muted">
                     {step.detail}
                   </div>
                 </div>
@@ -128,7 +128,7 @@ function AirBotVisual() {
         })}
       </div>
 
-      <div className="mt-4 border-t border-border pt-3 text-[10px] text-muted">
+      <div className="mt-4 border-t border-border pt-3 text-[11px] text-muted">
         cache miss → 기존 LangGraph / RAG 경로 실행
       </div>
     </div>
@@ -141,15 +141,15 @@ export function FeaturedProject({ project }: { project: Project }) {
   return (
     <article className="flex h-full flex-col rounded-2xl border border-border bg-surface p-7 shadow-[0_14px_36px_rgba(24,24,27,0.03)] sm:p-8">
       <div className="flex items-center gap-3">
-        <span className="font-mono text-[11px] font-medium text-accent">{project.number}</span>
-        <span className="text-[10px] font-semibold uppercase tracking-[0.13em] text-muted">
+        <span className="font-mono text-[12px] font-medium text-accent">{project.number}</span>
+        <span className="text-[12px] font-semibold uppercase tracking-[0.11em] text-muted">
           {project.category}
         </span>
       </div>
 
       <h3 className="mt-4 text-[30px] leading-[1.05] tracking-[-0.035em]">{project.title}</h3>
 
-      <div className="mt-2 text-[12px] font-medium text-muted">
+      <div className="mt-2 text-[13px] font-medium text-muted">
         {isBank ? "개인 프로젝트" : "AI 서버 · 6인 팀"} · {project.period}
       </div>
 
@@ -174,7 +174,7 @@ export function FeaturedProject({ project }: { project: Project }) {
             href={project.repository.href}
             target="_blank"
             rel="noreferrer noopener"
-            className="inline-flex items-center gap-1.5 text-[12px] font-medium text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
+            className="inline-flex items-center gap-1.5 text-[13px] font-medium text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
           >
             GitHub <ExternalLink size={12} strokeWidth={1.7} />
           </a>

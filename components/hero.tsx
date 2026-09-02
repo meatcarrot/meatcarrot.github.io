@@ -35,7 +35,7 @@ export function Hero() {
             <h1 className="max-w-[760px] text-balance text-[42px] leading-[1.06] tracking-[-0.04em] sm:text-[54px] lg:text-[62px]">
               믿고 쓸 수 있는
               <br />
-              시스템을 만듭니다.
+              시스템을 만듭니다
             </h1>
 
             <p className="mt-6 max-w-[660px] text-[16px] leading-[1.75] text-secondary sm:text-[17px]">
@@ -43,7 +43,7 @@ export function Hero() {
               정합성·성능·복구 가능성을 검증합니다.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[13px] font-medium text-muted">
+            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[14px] font-medium text-muted">
               <span>#Java</span>
               <span>#SpringBoot</span>
               <span>#Kafka</span>
@@ -69,10 +69,10 @@ export function Hero() {
                       className="mt-0.5 shrink-0 text-muted transition-colors group-hover:text-accent"
                     />
                     <div className="min-w-0">
-                      <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">
+                      <div className="text-[12px] font-semibold uppercase tracking-[0.10em] text-muted">
                         {contact.label}
                       </div>
-                      <div className="mt-1 truncate text-[13px] font-medium text-foreground underline-offset-4 group-hover:text-accent group-hover:underline">
+                      <div className="mt-1 truncate text-[14px] font-medium text-foreground underline-offset-4 group-hover:text-accent group-hover:underline">
                         {contact.value}
                       </div>
                     </div>

@@ -54,7 +54,7 @@ export function SectionHeading({
 
 export function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="font-mono text-[12px] text-muted">
+    <span className="font-mono text-[13px] text-muted">
       <span className="text-accent">#</span>{children}
     </span>
   )

@@ -139,10 +139,10 @@ function ChallengeRow({
         strokeWidth={1.7}
         className={accent ? "mt-0.5 text-accent" : "mt-0.5 text-muted"}
       />
-      <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">
+      <div className="text-[12px] font-semibold tracking-[0.04em] text-muted">
         {label}
       </div>
-      <div className={`text-[14px] leading-[1.7] ${accent ? "font-medium text-foreground" : "text-secondary"}`}>
+      <div className={`text-[15px] leading-[1.75] ${accent ? "font-medium text-foreground" : "text-secondary"}`}>
         {children}
       </div>
     </div>
@@ -159,7 +159,7 @@ export function EngineeringChallenge({
   return (
     <article className="border-t border-border pt-6">
       <div className="flex items-start gap-4">
-        <span className="font-mono text-[11px] font-medium text-accent">
+        <span className="font-mono text-[12px] font-medium text-accent">
           {String(index + 1).padStart(2, "0")}
         </span>
         <h3 className="text-[22px] leading-tight tracking-[-0.02em] text-foreground">
@@ -202,7 +202,7 @@ export function EngineeringChallenge({
       </div>
 
       {challenge.evidence ? (
-        <div className="mt-3 pl-[128px] font-mono text-[11px] text-muted">
+        <div className="mt-3 pl-[128px] font-mono text-[13px] text-muted">
           근거 · {challenge.evidence}
         </div>
       ) : null}

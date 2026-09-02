@@ -15,10 +15,10 @@ export function Header() {
       <Container className="flex h-14 items-center justify-between">
         <Link
           href="/"
-          className="group inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.16em] text-foreground transition-colors hover:text-accent"
+          className="group inline-flex items-center gap-2 text-[16px] font-semibold tracking-[0.12em] text-foreground transition-colors hover:text-accent"
         >
           <span
-            className="h-1.5 w-1.5 rounded-full bg-accent transition-transform duration-200 group-hover:scale-125"
+            className="h-2 w-2 rounded-full bg-accent transition-transform duration-200 group-hover:scale-125"
             aria-hidden
           />
           {profile.name}

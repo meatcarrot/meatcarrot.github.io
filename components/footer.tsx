@@ -13,7 +13,7 @@ export function Footer() {
     <footer id="contact" className="border-t border-border bg-subtle/55">
       <Container className="py-9">
         <div className="grid gap-5 sm:grid-cols-[120px_1fr_1fr_1fr] sm:items-center">
-          <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-accent">
+          <div className="text-[12px] font-semibold uppercase tracking-[0.13em] text-accent">
             연락처
           </div>
 
@@ -29,8 +29,8 @@ export function Footer() {
               >
                 <Icon size={17} strokeWidth={1.8} className="shrink-0 text-muted group-hover:text-accent" />
                 <div className="min-w-0">
-                  <div className="text-[10px] text-muted">{link.label}</div>
-                  <div className="truncate text-[13px] font-medium text-foreground group-hover:text-accent">
+                  <div className="text-[11px] font-medium text-muted">{link.label}</div>
+                  <div className="truncate text-[14px] font-medium text-foreground group-hover:text-accent">
                     {link.value}
                   </div>
                 </div>

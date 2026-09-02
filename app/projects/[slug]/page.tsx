@@ -49,7 +49,7 @@ function SectionHeading({
 }) {
   return (
     <div>
-      <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-accent">
+      <div className="text-[12px] font-semibold uppercase tracking-[0.13em] text-accent">
         {overline}
       </div>
       <h2 className="mt-2 text-[28px] leading-tight tracking-[-0.025em] text-foreground">
@@ -62,10 +62,10 @@ function SectionHeading({
 function MetaField({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">
+      <dt className="text-[12px] font-semibold uppercase tracking-[0.10em] text-muted">
         {label}
       </dt>
-      <dd className="mt-1 text-[13px] leading-relaxed text-foreground">{value}</dd>
+      <dd className="mt-1 text-[15px] leading-relaxed text-foreground">{value}</dd>
     </div>
   )
 }
@@ -89,17 +89,17 @@ export default async function ProjectDetailPage({
           <Container className="py-12 sm:py-14 lg:py-16">
             <Link
               href="/#projects"
-              className="inline-flex items-center gap-1.5 text-[13px] font-medium text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
+              className="inline-flex items-center gap-1.5 text-[14px] font-medium text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
             >
               <ArrowLeft size={14} strokeWidth={1.8} />
               프로젝트로 돌아가기
             </Link>
 
             <div className="mt-7 flex items-center gap-3">
-              <span className="font-mono text-[11px] font-medium text-accent">
+              <span className="font-mono text-[12px] font-medium text-accent">
                 {project.number}
               </span>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.13em] text-muted">
+              <span className="text-[12px] font-semibold uppercase tracking-[0.11em] text-muted">
                 {project.category}
               </span>
             </div>
@@ -131,12 +131,12 @@ export default async function ProjectDetailPage({
             </div>
 
             <div className="mt-5">
-              <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">
+              <div className="text-[12px] font-semibold uppercase tracking-[0.10em] text-muted">
                 담당 역할
               </div>
               <ul className="mt-2 grid gap-x-8 gap-y-1 sm:grid-cols-2">
                 {project.myRole.map((item) => (
-                  <li key={item} className="text-[13px] leading-[1.65] text-secondary">
+                  <li key={item} className="text-[15px] leading-[1.7] text-secondary">
                     · {item}
                   </li>
                 ))}
@@ -153,7 +153,7 @@ export default async function ProjectDetailPage({
                   href={project.repository.href}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="ml-1 inline-flex items-center gap-1 text-[12px] font-medium text-accent underline-offset-4 hover:underline"
+                  className="ml-1 inline-flex items-center gap-1 text-[13px] font-medium text-accent underline-offset-4 hover:underline"
                 >
                   GitHub <ExternalLink size={12} strokeWidth={1.7} />
                 </a>
@@ -166,7 +166,7 @@ export default async function ProjectDetailPage({
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14">
             <aside className="hidden lg:col-span-3 lg:block">
               <nav className="sticky top-24" aria-label="페이지 내 이동">
-                <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
+                <div className="text-[13px] font-semibold tracking-[0.04em] text-secondary">
                   프로젝트 상세
                 </div>
                 <ul className="mt-4 border-l border-border">
@@ -174,7 +174,7 @@ export default async function ProjectDetailPage({
                     <li key={section.id}>
                       <a
                         href={`#${section.id}`}
-                        className="-ml-px block border-l border-transparent py-1.5 pl-4 text-[12px] text-muted transition-colors hover:border-accent hover:text-foreground"
+                        className="-ml-px block border-l border-transparent py-2 pl-4 text-[14px] font-medium text-muted transition-colors hover:border-accent hover:text-foreground"
                       >
                         {section.label}
                       </a>
@@ -220,7 +220,7 @@ export default async function ProjectDetailPage({
                   title="문제 해결"
                 />
 
-                <p className="mt-4 max-w-[680px] text-[14px] leading-[1.7] text-secondary">
+                <p className="mt-4 max-w-[680px] text-[15px] leading-[1.75] text-secondary">
                   설계 판단과 트러블슈팅을 나누지 않고, 문제를 확인하고 해결책을 선택해 검증한 흐름으로 정리했습니다.
                 </p>
 
@@ -240,7 +240,7 @@ export default async function ProjectDetailPage({
 
                 <div className="mt-6 grid gap-6 md:grid-cols-2">
                   <div>
-                    <div className="flex items-center gap-2 text-[12px] font-semibold text-foreground">
+                    <div className="flex items-center gap-2 text-[14px] font-semibold text-foreground">
                       <CheckCircle2 size={16} strokeWidth={1.8} className="text-accent" />
                       검증
                     </div>
@@ -254,13 +254,13 @@ export default async function ProjectDetailPage({
                   </div>
 
                   <div className="rounded-xl bg-subtle/70 p-5">
-                    <div className="flex items-center gap-2 text-[12px] font-semibold text-foreground">
+                    <div className="flex items-center gap-2 text-[14px] font-semibold text-foreground">
                       <AlertTriangle size={16} strokeWidth={1.8} className="text-muted" />
                       한계
                     </div>
                     <ul className="mt-3 space-y-3">
                       {project.limitations.map((item) => (
-                        <li key={item} className="text-[13px] leading-[1.7] text-secondary">
+                        <li key={item} className="text-[15px] leading-[1.75] text-secondary">
                           {item}
                         </li>
                       ))}

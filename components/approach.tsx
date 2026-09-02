@@ -38,7 +38,7 @@ export function Approach() {
       <Container>
         <div className="grid gap-9 lg:grid-cols-[260px_1fr]">
           <div>
-            <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#8fb9e7]">
+            <div className="text-[12px] font-semibold uppercase tracking-[0.13em] text-[#8fb9e7]">
               개발 방식
             </div>
             <h2 className="mt-3 text-[30px] leading-[1.08] tracking-[-0.03em] text-white">
@@ -64,18 +64,18 @@ export function Approach() {
                   </div>
 
                   <div className="mt-4 flex items-center gap-2">
-                    <span className="font-mono text-[10px] text-[#8fb9e7]">{concept.number}</span>
+                    <span className="font-mono text-[11px] text-[#8fb9e7]">{concept.number}</span>
                     <h3 className="text-[16px] font-semibold text-white">{concept.title}</h3>
                   </div>
 
-                  <p className="mt-3 text-[13px] leading-[1.7] text-white/65">{concept.body}</p>
+                  <p className="mt-3 text-[14px] leading-[1.7] text-white/70">{concept.body}</p>
 
                   <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
                     {concept.references.map((reference) => (
                       <Link
                         key={reference.href}
                         href={reference.href}
-                        className="inline-flex items-center gap-1 text-[10px] font-semibold tracking-[0.03em] text-[#8fb9e7] hover:text-white"
+                        className="inline-flex items-center gap-1 text-[12px] font-semibold tracking-[0.02em] text-[#8fb9e7] hover:text-white"
                       >
                         {reference.label} <ArrowRight size={12} />
                       </Link>

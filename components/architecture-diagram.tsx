@@ -15,7 +15,7 @@ export function ArchitectureDiagram({
       aria-label="시스템 아키텍처 다이어그램"
     >
       <div className="mb-4 flex items-center gap-2">
-        <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+        <span className="font-mono text-[12px] uppercase tracking-[0.12em] text-muted">
           architecture
         </span>
         <span className="h-px flex-1 bg-border" aria-hidden />
@@ -31,18 +31,18 @@ export function ArchitectureDiagram({
               }`}
             >
               <span
-                className={`font-mono text-[13px] ${
+                className={`font-mono text-[14px] ${
                   node.emphasis ? "font-medium text-accent" : "text-foreground"
                 }`}
               >
                 {node.label}
               </span>
               {node.note ? (
-                <span className="font-mono text-[11px] text-muted">{node.note}</span>
+                <span className="font-mono text-[12px] text-muted">{node.note}</span>
               ) : null}
             </div>
             {i < flow.length - 1 ? (
-              <span aria-hidden className="ml-4 font-mono text-[12px] leading-none text-muted">
+              <span aria-hidden className="ml-4 font-mono text-[13px] leading-none text-muted">
                 ↓
               </span>
             ) : null}
@@ -50,7 +50,7 @@ export function ArchitectureDiagram({
         ))}
       </ol>
       {caption ? (
-        <figcaption className="mt-4 text-[13px] leading-relaxed text-muted">{caption}</figcaption>
+        <figcaption className="mt-4 text-[15px] leading-[1.7] text-secondary">{caption}</figcaption>
       ) : null}
     </figure>
   )
