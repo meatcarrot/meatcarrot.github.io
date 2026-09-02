@@ -15,22 +15,19 @@ export default function HomePage() {
       <main>
         <Hero />
 
-        <section className="py-24 sm:py-28 lg:py-32">
+        <section className="py-16 sm:py-20 lg:py-24">
           <Container>
             <SectionHeading
               id="projects"
-              overline="Selected Projects"
-              title="Selected Projects"
-              description="문제 정의, 기술적 의사결정, 그리고 그 결정이 실제로 동작했는지에 대한 검증을 중심으로 정리한 케이스 스터디입니다."
+              overline="주요 프로젝트"
+              title="프로젝트"
+              description="문제를 정의하고, 선택을 기록하고, 결과를 검증한 경험을 정리했습니다."
             />
 
-            <div className="mt-14 flex flex-col gap-20 sm:gap-24">
+            <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
               {featuredProjects.map((project) => (
                 <FeaturedProject key={project.slug} project={project} />
               ))}
-            </div>
-
-            <div className="mt-20 grid grid-cols-1 gap-6 sm:mt-24 md:grid-cols-2">
               {secondaryProjects.map((project) => (
                 <ProjectCard key={project.slug} project={project} />
               ))}

@@ -1,16 +1,16 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { ArrowLeft, ExternalLink, CheckCircle2, AlertTriangle } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Container, Tag } from "@/components/primitives"
 import { ArchitectureDiagram } from "@/components/architecture-diagram"
+import { EvidenceLink } from "@/components/blocks"
 import {
-  DecisionBlockView,
-  TroubleshootingBlockView,
-  EvidenceLink,
-} from "@/components/blocks"
-import { DetailSection, BulletList } from "@/components/detail-section"
+  EngineeringChallenge,
+  getProjectChallenges,
+} from "@/components/challenge-block"
 import { projects, getProject } from "@/data/projects"
 
 export function generateStaticParams() {
@@ -25,6 +25,7 @@ export async function generateMetadata({
   const { slug } = await params
   const project = getProject(slug)
   if (!project) return { title: "Project not found" }
+
   return {
     title: `${project.title} — Lee Heeyeon`,
     description: project.summary,
@@ -32,16 +33,42 @@ export async function generateMetadata({
 }
 
 const navSections = [
-  { id: "overview", label: "Overview" },
-  { id: "problem", label: "Problem" },
-  { id: "role", label: "My Role" },
-  { id: "architecture", label: "Architecture" },
-  { id: "decisions", label: "Technical Decisions" },
-  { id: "troubleshooting", label: "Troubleshooting" },
-  { id: "validation", label: "Validation / Result" },
-  { id: "limitations", label: "Limitations & Next" },
-  { id: "evidence", label: "Evidence" },
+  { id: "problem", label: "문제와 범위" },
+  { id: "architecture", label: "구조" },
+  { id: "challenges", label: "문제 해결" },
+  { id: "results", label: "결과" },
+  { id: "evidence", label: "근거" },
 ]
+
+function SectionHeading({
+  overline,
+  title,
+}: {
+  overline: string
+  title: string
+}) {
+  return (
+    <div>
+      <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-accent">
+        {overline}
+      </div>
+      <h2 className="mt-2 text-[28px] leading-tight tracking-[-0.025em] text-foreground">
+        {title}
+      </h2>
+    </div>
+  )
+}
+
+function MetaField({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <dt className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">
+        {label}
+      </dt>
+      <dd className="mt-1 text-[13px] leading-relaxed text-foreground">{value}</dd>
+    </div>
+  )
+}
 
 export default async function ProjectDetailPage({
   params,
@@ -52,199 +79,210 @@ export default async function ProjectDetailPage({
   const project = getProject(slug)
   if (!project) notFound()
 
+  const challenges = getProjectChallenges(project)
+
   return (
     <>
       <Header />
       <main>
-        {/* Project hero */}
         <section className="border-b border-border">
-          <Container className="py-14 sm:py-16 lg:py-20">
+          <Container className="py-12 sm:py-14 lg:py-16">
             <Link
               href="/#projects"
-              className="inline-flex items-center gap-1.5 font-mono text-[13px] text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
+              className="inline-flex items-center gap-1.5 text-[13px] font-medium text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
             >
-              <span aria-hidden>←</span> Back to projects
+              <ArrowLeft size={14} strokeWidth={1.8} />
+              프로젝트로 돌아가기
             </Link>
 
-            <div className="mt-8 flex items-center gap-3">
-              <span className="font-mono text-[13px] font-medium text-accent">{project.number}</span>
-              <span className="font-mono text-[12px] uppercase tracking-[0.12em] text-muted">
+            <div className="mt-7 flex items-center gap-3">
+              <span className="font-mono text-[11px] font-medium text-accent">
+                {project.number}
+              </span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.13em] text-muted">
                 {project.category}
               </span>
             </div>
 
-            <h1 className="mt-4 text-balance text-[36px] font-bold leading-[1.1] tracking-tight sm:text-[44px] lg:text-[48px]">
+            <h1 className="mt-4 max-w-[880px] text-balance text-[38px] leading-[1.05] tracking-[-0.04em] sm:text-[46px] lg:text-[52px]">
               {project.title}
             </h1>
 
-            <div className="mt-6 border-l-2 border-accent pl-4">
-              <div className="text-balance text-[22px] font-bold leading-tight tracking-tight sm:text-[26px]">
+            <div className="mt-5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <div className="text-[22px] font-[720] tracking-[-0.025em] text-foreground sm:text-[26px]">
                 {project.outcome}
               </div>
               {project.outcomeNote ? (
-                <div className="mt-1.5 text-[15px] leading-relaxed text-secondary">
-                  {project.outcomeNote}
-                </div>
+                <div className="text-[14px] text-secondary">{project.outcomeNote}</div>
               ) : null}
               {project.outcomeLabel ? (
-                <div className="mt-1.5 text-[15px] leading-relaxed text-secondary">
-                  {project.outcomeLabel}
-                </div>
+                <div className="text-[14px] text-secondary">{project.outcomeLabel}</div>
               ) : null}
             </div>
 
-            <p className="mt-6 max-w-[720px] text-[17px] leading-relaxed text-secondary">
+            <p className="mt-5 max-w-[780px] text-[16px] leading-[1.75] text-secondary">
               {project.summary}
             </p>
 
-            {/* Inline meta (mobile-first, shown under hero) */}
-            <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-border pt-6 sm:grid-cols-4 lg:hidden">
-              <MetaField label="Role" value={project.role} />
-              <MetaField label="Period" value={project.period} />
-              <MetaField label="Team" value={project.team} />
-              {project.repository ? (
-                <div>
-                  <dt className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted">Repo</dt>
-                  <dd className="mt-1">
-                    <a
-                      href={project.repository.href}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="text-[14px] text-accent underline-offset-4 hover:underline"
-                    >
-                      Repository ↗
-                    </a>
-                  </dd>
-                </div>
-              ) : null}
-            </dl>
+            <div className="mt-7 grid gap-5 border-y border-border py-5 sm:grid-cols-3">
+              <MetaField label="역할" value={project.role} />
+              <MetaField label="기간" value={project.period} />
+              <MetaField label="팀" value={project.team} />
+            </div>
 
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-5">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">
+                담당 역할
+              </div>
+              <ul className="mt-2 grid gap-x-8 gap-y-1 sm:grid-cols-2">
+                {project.myRole.map((item) => (
+                  <li key={item} className="text-[13px] leading-[1.65] text-secondary">
+                    · {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
               {project.technologies.map((tech) => (
                 <Tag key={tech}>{tech}</Tag>
               ))}
+
+              {project.repository ? (
+                <a
+                  href={project.repository.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="ml-1 inline-flex items-center gap-1 text-[12px] font-medium text-accent underline-offset-4 hover:underline"
+                >
+                  GitHub <ExternalLink size={12} strokeWidth={1.7} />
+                </a>
+              ) : null}
             </div>
           </Container>
         </section>
 
-        {/* Body */}
-        <Container className="py-16 sm:py-20">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
-            {/* Sticky sidebar (desktop) */}
+        <Container className="py-12 sm:py-16">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14">
             <aside className="hidden lg:col-span-3 lg:block">
-              <div className="sticky top-24 flex flex-col gap-8">
-                <nav aria-label="페이지 내 이동">
-                  <ul className="flex flex-col gap-2 border-l border-border">
-                    {navSections.map((s) => (
-                      <li key={s.id}>
-                        <a
-                          href={`#${s.id}`}
-                          className="-ml-px block border-l border-transparent py-1 pl-4 text-[13px] text-muted transition-colors hover:border-accent hover:text-foreground"
-                        >
-                          {s.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-
-                <dl className="flex flex-col gap-4 border-t border-border pt-6">
-                  <MetaField label="Role" value={project.role} />
-                  <MetaField label="Period" value={project.period} />
-                  <MetaField label="Team" value={project.team} />
-                  {project.repository ? (
-                    <div>
-                      <dt className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
-                        Repo
-                      </dt>
-                      <dd className="mt-1">
-                        <a
-                          href={project.repository.href}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          className="text-[14px] text-accent underline-offset-4 hover:underline"
-                        >
-                          Repository ↗
-                        </a>
-                      </dd>
-                    </div>
-                  ) : null}
-                </dl>
-              </div>
+              <nav className="sticky top-24" aria-label="페이지 내 이동">
+                <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
+                  프로젝트 상세
+                </div>
+                <ul className="mt-4 border-l border-border">
+                  {navSections.map((section) => (
+                    <li key={section.id}>
+                      <a
+                        href={`#${section.id}`}
+                        className="-ml-px block border-l border-transparent py-1.5 pl-4 text-[12px] text-muted transition-colors hover:border-accent hover:text-foreground"
+                      >
+                        {section.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </aside>
 
-            {/* Main content */}
-            <div className="flex flex-col gap-14 lg:col-span-9">
-              <section id="overview" className="scroll-mt-24">
-                <span className="font-mono text-[12px] uppercase tracking-[0.14em] text-accent">
-                  Overview
-                </span>
-                <p className="mt-4 max-w-[760px] text-[17px] leading-relaxed text-secondary">
+            <div className="flex flex-col gap-12 lg:col-span-9">
+              <section id="problem" className="scroll-mt-24">
+                <SectionHeading overline="문제와 범위" title="핵심 문제" />
+
+                <p className="mt-5 max-w-[780px] text-[16px] leading-[1.8] text-secondary">
                   {project.overview}
                 </p>
+
+                <ul className="mt-5 grid gap-3">
+                  {project.problem.slice(0, 3).map((item) => (
+                    <li
+                      key={item}
+                      className="flex gap-3 border-t border-border pt-3 text-[14px] leading-[1.7] text-secondary"
+                    >
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </section>
 
-              <DetailSection id="problem" overline="Problem" title="문제 정의">
-                <BulletList items={project.problem} />
-              </DetailSection>
-
-              <DetailSection id="role" overline="My Role" title="담당 역할">
-                <BulletList items={project.myRole} />
-              </DetailSection>
-
-              <DetailSection id="architecture" overline="Architecture" title="구조">
+              <section id="architecture" className="scroll-mt-24 border-t border-border pt-10">
+                <SectionHeading overline="구조" title="핵심 구조" />
                 <ArchitectureDiagram
                   flow={project.architecture.flow}
                   caption={project.architecture.caption}
-                  className="max-w-[520px]"
+                  className="mt-6 max-w-[620px]"
                 />
-              </DetailSection>
+              </section>
 
-              <DetailSection id="decisions" overline="Technical Decisions" title="기술적 의사결정">
-                <div className="flex flex-col gap-5">
-                  {project.decisions.map((d, i) => (
-                    <DecisionBlockView key={i} block={d} />
+              <section id="challenges" className="scroll-mt-24 border-t border-border pt-10">
+                <SectionHeading
+                  overline="문제 해결"
+                  title="문제 해결"
+                />
+
+                <p className="mt-4 max-w-[680px] text-[14px] leading-[1.7] text-secondary">
+                  설계 판단과 트러블슈팅을 나누지 않고, 문제를 확인하고 해결책을 선택해 검증한 흐름으로 정리했습니다.
+                </p>
+
+                <div className="mt-7 flex flex-col gap-9">
+                  {challenges.map((challenge, index) => (
+                    <EngineeringChallenge
+                      key={challenge.title}
+                      challenge={challenge}
+                      index={index}
+                    />
                   ))}
                 </div>
-              </DetailSection>
+              </section>
 
-              <DetailSection id="troubleshooting" overline="Troubleshooting" title="트러블슈팅">
-                <div className="flex flex-col gap-5">
-                  {project.troubleshooting.map((t, i) => (
-                    <TroubleshootingBlockView key={i} block={t} />
+              <section id="results" className="scroll-mt-24 border-t border-border pt-10">
+                <SectionHeading overline="결과" title="검증과 한계" />
+
+                <div className="mt-6 grid gap-6 md:grid-cols-2">
+                  <div>
+                    <div className="flex items-center gap-2 text-[12px] font-semibold text-foreground">
+                      <CheckCircle2 size={16} strokeWidth={1.8} className="text-accent" />
+                      검증
+                    </div>
+                    <ul className="mt-3 space-y-3">
+                      {project.validation.map((item) => (
+                        <li key={item} className="text-[14px] leading-[1.7] text-secondary">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="rounded-xl bg-subtle/70 p-5">
+                    <div className="flex items-center gap-2 text-[12px] font-semibold text-foreground">
+                      <AlertTriangle size={16} strokeWidth={1.8} className="text-muted" />
+                      한계
+                    </div>
+                    <ul className="mt-3 space-y-3">
+                      {project.limitations.map((item) => (
+                        <li key={item} className="text-[13px] leading-[1.7] text-secondary">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section id="evidence" className="scroll-mt-24 border-t border-border pt-10">
+                <SectionHeading overline="근거" title="확인 가능한 자료" />
+
+                <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3">
+                  {project.evidence.map((item, index) => (
+                    <EvidenceLink key={`${item.label}-${index}`} item={item} />
                   ))}
                 </div>
-              </DetailSection>
-
-              <DetailSection id="validation" overline="Validation / Result" title="검증과 결과">
-                <BulletList items={project.validation} />
-              </DetailSection>
-
-              <DetailSection id="limitations" overline="Limitations & Next" title="한계와 다음 단계">
-                <BulletList items={project.limitations} />
-              </DetailSection>
-
-              <DetailSection id="evidence" overline="Evidence" title="근거">
-                <div className="flex flex-col gap-3">
-                  {project.evidence.map((e, i) => (
-                    <EvidenceLink key={i} item={e} />
-                  ))}
-                </div>
-              </DetailSection>
+              </section>
             </div>
           </div>
         </Container>
       </main>
       <Footer />
     </>
-  )
-}
-
-function MetaField({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <dt className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted">{label}</dt>
-      <dd className="mt-1 text-[14px] leading-relaxed text-foreground">{value}</dd>
-    </div>
   )
 }

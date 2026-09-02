@@ -60,12 +60,12 @@ export const projects: Project[] = [
   {
     slug: "bank",
     number: "01",
-    category: "BACKEND · RELIABILITY",
-    title: "Kafka-based Transfer System",
-    outcome: "100 concurrent transfers",
-    outcomeNote: "with final balance consistency verified",
+    category: "백엔드 · 신뢰성",
+    title: "Kafka 기반 송금 시스템",
+    outcome: "100건 동시 송금",
+    outcomeNote: "최종 잔액 정합성 검증",
     summary:
-      "송금 과정의 DB-Kafka 불일치, 중복 메시지, 동시성 충돌과 장애 재처리 문제를 Outbox, Ledger, Consumer Idempotency, Optimistic Lock으로 검증한 개인 프로젝트.",
+      "DB-Kafka 간 정합성, 중복 소비, 동시성 충돌을 Outbox·Optimistic Lock·멱등성으로 검증한 개인 프로젝트.",
     description:
       "단순 잔액 변경에서 출발해 정합성·복구 가능성·장애 대응을 처음부터 구조화한 금융 백엔드 학습 프로젝트입니다.",
     technologies: ["Java", "Spring Boot", "Kafka", "MySQL", "Docker"],
@@ -147,12 +147,12 @@ export const projects: Project[] = [
   {
     slug: "airbot",
     number: "02",
-    category: "AI SERVICE · PERFORMANCE",
-    title: "Airport AI Chatbot",
-    outcome: "30–40 sec → under 1 sec*",
-    outcomeLabel: "Similar-query response in project testing",
+    category: "AI 서비스 · 성능 최적화",
+    title: "인천공항 AI 챗봇 ‘아라’",
+    outcome: "30–40초 → 1초 이내*",
+    outcomeLabel: "유사 질의 응답 · 프로젝트 테스트 환경",
     summary:
-      "실시간 공항 데이터와 RAG를 결합한 AI 서비스에서 반복 LangGraph 실행 병목을 발견하고, MongoDB Vector Search 기반 Semantic Cache fast path로 개선.",
+      "반복 LangGraph 실행으로 30–40초 걸리던 유사 질의를 Semantic Cache를 통해 1초 이내로 단축했습니다.",
     description:
       "인천공항 공공 API와 Vector DB를 결합해 최신 공항 정보를 제공하는 RAG 기반 챗봇 ‘아라’의 응답 성능을 개선했습니다.",
     technologies: ["Django", "LangGraph", "MongoDB Vector Search", "RAG"],
@@ -227,14 +227,14 @@ export const projects: Project[] = [
   {
     slug: "weather",
     number: "03",
-    category: "ML · PROBLEM DEFINITION",
-    title: "Weather Big Data Contest",
-    outcome: "Special Award",
-    outcomeNote: "2025 Weather Big Data Contest",
+    category: "머신러닝 · 문제 정의",
+    title: "날씨 빅데이터 기반 119 신고량 예측",
+    outcome: "특별상",
+    outcomeNote: "2025 날씨 빅데이터 콘테스트",
     secondaryMetric: "RMSE ≈ 0.9",
-    secondaryMetricLabel: "Final model",
+    secondaryMetricLabel: "최종 모델",
     summary:
-      "평상시와 재난 시 119 신고량의 서로 다른 분포에 주목해, 극단 상황을 먼저 분류한 뒤 전용 회귀 모델로 분기하는 2-Stage 예측 구조를 설계한 팀 프로젝트.",
+      "평상시와 재난 시 신고량의 분포 차이에 주목해 2-Stage 예측 구조를 설계하고 특별상을 수상했습니다.",
     description:
       "날씨 데이터와 부산 지역 119 신고 데이터를 결합해 신고 건수를 예측하고, 부산소방재난본부장상(특별상)을 수상했습니다.",
     technologies: ["Python", "시계열 분석", "Regression", "Classification"],
@@ -294,12 +294,12 @@ export const projects: Project[] = [
   {
     slug: "llm-qa",
     number: "04",
-    category: "LLM · VERIFICATION",
-    title: "LLM Code QA Framework",
-    outcome: "Execution-based feedback loop",
-    outcomeNote: "for generated C/C++ code",
+    category: "LLM · 실행 기반 검증",
+    title: "LLM 생성 코드 검증 프레임워크",
+    outcome: "실행 기반 피드백 루프",
+    outcomeNote: "LLM 생성 C/C++ 코드 검증",
     summary:
-      "LLM이 생성한 코드를 그대로 신뢰하지 않고 실제 컴파일·실행 및 C++ Sanitizer 결과를 리뷰 과정에 다시 전달하는 검증 파이프라인을 연구한 3인 학부 캡스톤 프로젝트.",
+      "생성 코드를 실제 컴파일·실행하고 Sanitizer 결과를 다시 피드백하는 검증 파이프라인을 연구했습니다.",
     description:
       "상용 LLM이 생성한 코드의 품질을 자동 점검하고, 실행 근거를 피드백으로 되돌려 개선하는 QA 프레임워크를 연구했습니다.",
     technologies: ["Python", "Qwen 2.5 Coder family", "LoRA", "C++ Sanitizer"],
