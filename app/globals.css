@@ -1,5 +1,6 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css");
 @import "tailwindcss";
+@import "@xyflow/react/dist/style.css";
 
 @theme inline {
   --color-background: #fbfbfa;
@@ -75,5 +76,18 @@
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+}
+
+
+/* portfolio-print-polish */
+@media print {
+  .react-flow__controls,
+  .react-flow__panel {
+    display: none !important;
+  }
+
+  .react-flow {
+    border-color: #e5e7eb !important;
   }
 }

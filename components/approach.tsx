@@ -1,89 +1,75 @@
 import Link from "next/link"
-import { ShieldCheck, Gauge, BadgeCheck, ArrowRight } from "lucide-react"
 import { Container } from "./primitives"
 
-const concepts = [
+const principles = [
   {
-    number: "01",
+    signal: "실패 조건",
     title: "신뢰성",
     body: "실패 이후에도 상태를 추적하고 복구할 수 있는 구조를 설계합니다.",
-    references: [{ label: "송금 시스템", href: "/projects/bank/" }],
-    icon: ShieldCheck,
-    tone: "bg-[#20344c] text-[#8fb9e7]",
+    reference: { label: "송금 시스템", href: "/projects/bank/" },
   },
   {
-    number: "02",
+    signal: "병목",
     title: "성능",
     body: "비용이 큰 실행 경로를 찾고 더 짧고 명확한 경로로 바꿉니다.",
-    references: [{ label: "공항 AI 챗봇", href: "/projects/airbot/" }],
-    icon: Gauge,
-    tone: "bg-[#1f3e31] text-[#74c795]",
+    reference: { label: "공항 AI 챗봇", href: "/projects/airbot/" },
   },
   {
-    number: "03",
+    signal: "결과",
     title: "검증",
-    body: "결과를 그대로 신뢰하지 않고 테스트와 외부 근거로 검증합니다.",
-    references: [
-      { label: "날씨 예측", href: "/projects/weather/" },
-      { label: "LLM 코드 검증", href: "/projects/llm-qa/" },
-    ],
-    icon: BadgeCheck,
-    tone: "bg-[#332d49] text-[#b6a1ef]",
+    body: "결과를 그대로 신뢰하지 않고 테스트와 외부 근거로 확인합니다.",
+    reference: { label: "검증 프로젝트", href: "/projects/llm-qa/" },
   },
 ]
 
 export function Approach() {
   return (
-    <section id="approach" className="scroll-mt-24 bg-[#15171b] py-14 text-white sm:py-16">
+    <section
+      id="approach"
+      className="scroll-mt-16 bg-[#f7f7f4] py-16 sm:py-20 lg:py-24"
+    >
       <Container>
-        <div className="grid gap-9 lg:grid-cols-[260px_1fr]">
+        <div className="grid gap-12 lg:grid-cols-[300px_1fr] lg:gap-20">
           <div>
-            <div className="text-[12px] font-semibold uppercase tracking-[0.13em] text-[#8fb9e7]">
-              개발 방식
-            </div>
-            <h2 className="mt-3 text-[30px] leading-[1.08] tracking-[-0.03em] text-white">
+            <h2 className="text-[30px] font-semibold leading-[1.1] tracking-[-0.035em] text-[#111318] sm:text-[34px]">
               문제를 바라보고
               <br />
               해결하는 방식
             </h2>
+
+            <p className="mt-5 max-w-[270px] text-[14px] leading-[1.8] text-[#68707a]">
+              기술을 먼저 고르기보다 실패 조건과 검증 방법을 먼저 정의합니다.
+            </p>
           </div>
 
-          <div className="grid gap-0 md:grid-cols-3">
-            {concepts.map((concept, index) => {
-              const Icon = concept.icon
-
-              return (
-                <div
-                  key={concept.number}
-                  className={`px-0 py-4 md:px-6 md:py-0 ${
-                    index > 0 ? "border-t border-white/10 md:border-l md:border-t-0" : ""
-                  }`}
-                >
-                  <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${concept.tone}`}>
-                    <Icon size={19} strokeWidth={1.8} />
-                  </div>
-
-                  <div className="mt-4 flex items-center gap-2">
-                    <span className="font-mono text-[11px] text-[#8fb9e7]">{concept.number}</span>
-                    <h3 className="text-[16px] font-semibold text-white">{concept.title}</h3>
-                  </div>
-
-                  <p className="mt-3 text-[14px] leading-[1.7] text-white/70">{concept.body}</p>
-
-                  <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
-                    {concept.references.map((reference) => (
-                      <Link
-                        key={reference.href}
-                        href={reference.href}
-                        className="inline-flex items-center gap-1 text-[12px] font-semibold tracking-[0.02em] text-[#8fb9e7] hover:text-white"
-                      >
-                        {reference.label} <ArrowRight size={12} />
-                      </Link>
-                    ))}
-                  </div>
+          <div className="border-t border-[#cfd5dc]">
+            {principles.map((principle) => (
+              <article
+                key={principle.title}
+                className="grid gap-4 border-b border-[#dfe3e8] py-7 sm:grid-cols-[92px_110px_1fr] sm:gap-6 lg:grid-cols-[110px_125px_1fr] lg:py-8"
+              >
+                <div className="pt-1 text-[11px] font-medium tracking-[0.04em] text-[#8a929c]">
+                  {principle.signal}
                 </div>
-              )
-            })}
+
+                <h3 className="text-[21px] font-semibold tracking-[-0.025em] text-[#111318]">
+                  {principle.title}
+                </h3>
+
+                <div>
+                  <p className="max-w-[620px] text-[15px] leading-[1.75] text-[#59616b]">
+                    {principle.body}
+                  </p>
+
+                  <Link
+                    href={principle.reference.href}
+                    className="mt-3 inline-flex text-[13px] font-semibold text-[#2563eb] underline-offset-4 hover:underline"
+                  >
+                    {principle.reference.label} →
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </Container>
