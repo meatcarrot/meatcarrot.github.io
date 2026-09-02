@@ -1,42 +1,38 @@
-import { BookOpen, Code2, Mail } from "lucide-react"
 import { Container } from "./primitives"
 import { profile } from "@/data/experience"
 
 const links = [
-  { label: "GitHub", value: "github.com/meatcarrot", href: profile.github, icon: Code2 },
-  { label: "Email", value: profile.email, href: `mailto:${profile.email}`, icon: Mail },
-  { label: "Velog", value: "velog.io/@ninguis555", href: profile.velog, icon: BookOpen },
+  { label: "GitHub", value: "meatcarrot", href: profile.github },
+  { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
+  { label: "Velog", value: "@ninguis555", href: profile.velog },
 ]
 
 export function Footer() {
   return (
-    <footer id="contact" className="border-t border-border bg-subtle/55">
-      <Container className="py-9">
-        <div className="grid gap-5 sm:grid-cols-[120px_1fr_1fr_1fr] sm:items-center">
-          <div className="text-[12px] font-semibold uppercase tracking-[0.13em] text-accent">
-            연락처
+    <footer id="contact" className="bg-[#f3f5f7] text-[#111318]">
+      <Container className="py-10 sm:py-12">
+        <div className="grid gap-8 border-t border-[#dfe3e8] pt-9 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <div className="text-[18px] font-semibold tracking-[0.14em]">{profile.name}</div>
+            <div className="mt-2 text-[13px] text-[#777e87]">Backend Developer</div>
           </div>
 
-          {links.map((link) => {
-            const Icon = link.icon
-            return (
+          <div className="flex flex-wrap gap-x-8 gap-y-4">
+            {links.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel={link.href.startsWith("http") ? "noreferrer noopener" : undefined}
-                className="group flex min-w-0 items-center gap-3"
+                className="group"
               >
-                <Icon size={17} strokeWidth={1.8} className="shrink-0 text-muted group-hover:text-accent" />
-                <div className="min-w-0">
-                  <div className="text-[11px] font-medium text-muted">{link.label}</div>
-                  <div className="truncate text-[14px] font-medium text-foreground group-hover:text-accent">
-                    {link.value}
-                  </div>
+                <div className="text-[10px] font-medium text-[#9aa0a8]">{link.label}</div>
+                <div className="mt-1 max-w-[210px] truncate text-[13px] text-[#606873] group-hover:text-[#111318]">
+                  {link.value}
                 </div>
               </a>
-            )
-          })}
+            ))}
+          </div>
         </div>
       </Container>
     </footer>
