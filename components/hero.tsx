@@ -58,7 +58,7 @@ export function Hero() {
             <h1 className="max-w-[720px] text-balance text-[44px] font-semibold leading-[1.03] tracking-[-0.045em] text-[#111318] sm:text-[56px] lg:text-[64px]">
               믿고 쓸 수 있는
               <br />
-              시스템을 만듭니다.
+              시스템을 만듭니다
             </h1>
 
             <p className="mt-7 max-w-[610px] text-[16px] leading-[1.8] text-[#5f6670] sm:text-[17px]">
