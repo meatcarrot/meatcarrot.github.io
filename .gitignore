@@ -1,9 +1,8 @@
-@"
-node_modules/
+﻿node_modules/
 .next/
 out/
 .env
 .env.*
 *.log
 .DS_Store
-"@ | Set-Content .gitignore
+.idea/
