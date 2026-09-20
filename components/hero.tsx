@@ -18,7 +18,7 @@ export function Hero() {
             <div className="min-w-0">
               <p className="text-[14px] font-semibold tracking-[0.12em] text-[#2563eb]">ABOUT ME</p>
               <h1 id="intro-heading" className="mt-5 max-w-[720px] text-balance text-[32px] font-semibold leading-[1.4] tracking-[-0.035em] sm:text-[40px]">
-                실제 쓰임을 생각하는 개발자 이희연입니다.
+                실제 쓰임을 생각하는 개발자 이희연입니다
               </h1>
               <ul className="mt-7 space-y-4 text-[16px] leading-[1.85] text-[#59616b]">
                 <li>기능 하나를 추가할 때도 <strong className="font-semibold text-[#202733]">사용하는 사람에게 도움이 되는지</strong> 생각합니다.</li>
