@@ -83,12 +83,43 @@
 /* portfolio-print-polish */
 @media print {
   .react-flow__controls,
-  .react-flow__panel {
+  .react-flow__panel,
+  .architecture-screen-actions {
     display: none !important;
   }
 
   .react-flow {
     border-color: #e5e7eb !important;
+  }
+
+  .architecture-block {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .architecture-frame {
+    overflow: visible !important;
+    border-color: #e5e7eb !important;
+    background: #fbfbfa !important;
+    box-shadow: none !important;
+  }
+
+  .architecture-svg {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 175mm !important;
+    object-fit: contain !important;
+  }
+
+  #architecture {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 }
 
