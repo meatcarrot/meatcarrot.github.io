@@ -4,8 +4,9 @@ import { profile } from "@/data/experience"
 
 const navItems = [
   { label: "About Me", href: "/#about" },
-  { label: "프로젝트", href: "/#projects" },
   { label: "경험", href: "/#experience" },
+  { label: "기술", href: "/#skills" },
+  { label: "프로젝트", href: "/#projects" },
   { label: "GitHub", href: profile.github, external: true },
 ]
 

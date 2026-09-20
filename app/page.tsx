@@ -1,10 +1,7 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { Container } from "@/components/primitives"
-import { FeaturedProject } from "@/components/featured-project"
 import { ProjectCard } from "@/components/project-card"
-import { AboutMe } from "@/components/about-me"
-import { ExperienceTimeline } from "@/components/experience-timeline"
 import { Footer } from "@/components/footer"
 import { featuredProjects, secondaryProjects } from "@/data/projects"
 
@@ -14,7 +11,6 @@ export default function HomePage() {
       <Header />
       <main id="main-content">
         <Hero />
-        <AboutMe />
 
         <section
           id="projects"
@@ -32,21 +28,14 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div>
-              {featuredProjects.map((project) => (
-                <FeaturedProject key={project.slug} project={project} />
-              ))}
-            </div>
-
             <div className="mt-5 grid gap-0 divide-y divide-[#dfe3e8]">
-              {secondaryProjects.map((project) => (
+              {[...featuredProjects, ...secondaryProjects].map((project) => (
                 <ProjectCard key={project.slug} project={project} />
               ))}
             </div>
           </Container>
         </section>
 
-        <ExperienceTimeline />
       </main>
       <Footer />
     </>

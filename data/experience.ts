@@ -30,6 +30,9 @@ export const experience: ExperienceItem[] = [
 export const profile = {
   name: "LEE HEEYEON",
   role: "Backend Developer",
+  birthDate: "2000.03.08",
+  address: "부산광역시 강서구 신호동",
+  phone: "010-6881-3500",
   github: "https://github.com/meatcarrot",
   email: "ninguis555@gmail.com",
   velog: "https://velog.io/@ninguis555/posts",
