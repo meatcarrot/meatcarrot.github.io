@@ -5,7 +5,7 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="grid gap-5 py-7 sm:grid-cols-[minmax(0,1fr)_minmax(220px,0.7fr)_auto] sm:items-center sm:gap-8">
       <div className="min-w-0">
-        <div className="text-[11px] font-medium text-[#8a9098]">{project.category}</div>
+        <div className="text-[13px] font-medium text-[#59616b]">{project.category}</div>
         <h3 className="mt-2 text-[21px] font-semibold leading-tight tracking-[-0.025em] text-[#111318] sm:text-[23px]">
           {project.title}
         </h3>
@@ -17,19 +17,19 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="min-w-0">
         <div className="text-[17px] font-semibold text-[#2a3038]">{project.outcome}</div>
         {project.outcomeNote ? (
-          <div className="mt-1 text-[12px] text-[#8a9098]">{project.outcomeNote}</div>
+          <div className="mt-1 text-[13px] text-[#59616b]">{project.outcomeNote}</div>
         ) : null}
         {project.secondaryMetric ? (
-          <div className="mt-2 text-[12px] font-medium text-[#2563eb]">
+          <div className="mt-2 text-[13px] font-medium text-[#2563eb]">
             {project.secondaryMetricLabel
               ? `${project.secondaryMetricLabel} ${project.secondaryMetric}`
               : project.secondaryMetric}
           </div>
         ) : null}
 
-        <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[10px] text-[#9aa0a8]">
+        <div className="mt-3 flex flex-wrap gap-2">
           {project.technologies.slice(0, 4).map((tech) => (
-            <span key={tech}>{tech}</span>
+            <span key={tech} className="tech-tag">{tech}</span>
           ))}
         </div>
       </div>

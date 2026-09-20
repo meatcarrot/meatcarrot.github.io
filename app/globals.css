@@ -91,3 +91,20 @@
     border-color: #e5e7eb !important;
   }
 }
+
+/* Readable, consistent technology labels across overview and case studies. */
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 0.25rem 0.625rem;
+  border: 1px solid #dce1e7;
+  border-radius: 0.375rem;
+  background-color: #f0f3f6;
+  color: #434d5b;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0;
+}

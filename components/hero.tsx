@@ -8,7 +8,7 @@ function SelectedCaseTrace() {
     <div className="border-t border-[#d7dce2] pt-5">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <div className="text-[11px] font-medium tracking-[0.06em] text-[#8a9098]">
+          <div className="text-[13px] font-medium tracking-[0.06em] text-[#59616b]">
             대표 사례
           </div>
           <div className="mt-1 text-[15px] font-semibold text-[#111318]">
@@ -17,7 +17,7 @@ function SelectedCaseTrace() {
         </div>
         <Link
           href="/projects/bank/"
-          className="text-[12px] font-semibold text-[#2563eb] underline-offset-4 hover:underline"
+          className="text-[13px] font-semibold text-[#2563eb] underline-offset-4 hover:underline"
         >
           상세 보기 →
         </Link>
@@ -30,7 +30,7 @@ function SelectedCaseTrace() {
           <div className="text-[19px] font-semibold tracking-[-0.02em] text-[#111318]">
             100건
           </div>
-          <div className="mt-1 text-[12px] leading-relaxed text-[#7b828c]">
+          <div className="mt-1 text-[13px] leading-relaxed text-[#59616b]">
             동시 송금 시나리오
           </div>
         </div>
@@ -38,7 +38,7 @@ function SelectedCaseTrace() {
           <div className="text-[19px] font-semibold tracking-[-0.02em] text-[#111318]">
             정합성 검증
           </div>
-          <div className="mt-1 text-[12px] leading-relaxed text-[#7b828c]">
+          <div className="mt-1 text-[13px] leading-relaxed text-[#59616b]">
             최종 잔액 합계 확인
           </div>
         </div>
@@ -84,12 +84,12 @@ export function Hero() {
               </a>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-x-5 gap-y-2 font-mono text-[12px] text-[#8a9098]">
-              <span>Java</span>
-              <span>Spring Boot</span>
-              <span>Kafka</span>
-              <span>MySQL</span>
-              <span>AI Service</span>
+            <div className="mt-10 flex flex-wrap gap-2">
+              <span className="tech-tag">Java</span>
+              <span className="tech-tag">Spring Boot</span>
+              <span className="tech-tag">Kafka</span>
+              <span className="tech-tag">MySQL</span>
+              <span className="tech-tag">AI Service</span>
             </div>
           </div>
 
@@ -105,13 +105,13 @@ export function Hero() {
             rel="noreferrer noopener"
             className="group"
           >
-            <div className="font-mono text-[10px] tracking-[0.1em] text-[#9aa0a8]">GITHUB</div>
+            <div className="font-mono text-[13px] tracking-[0.1em] text-[#59616b]">GITHUB</div>
             <div className="mt-1 text-[14px] font-medium text-[#59616b] group-hover:text-[#111318]">
               github.com/meatcarrot ↗
             </div>
           </a>
           <a href={`mailto:${profile.email}`} className="group">
-            <div className="font-mono text-[10px] tracking-[0.1em] text-[#9aa0a8]">EMAIL</div>
+            <div className="font-mono text-[13px] tracking-[0.1em] text-[#59616b]">EMAIL</div>
             <div className="mt-1 text-[14px] font-medium text-[#59616b] group-hover:text-[#111318]">
               {profile.email}
             </div>
@@ -122,7 +122,7 @@ export function Hero() {
             rel="noreferrer noopener"
             className="group"
           >
-            <div className="font-mono text-[10px] tracking-[0.1em] text-[#9aa0a8]">VELOG</div>
+            <div className="font-mono text-[13px] tracking-[0.1em] text-[#59616b]">VELOG</div>
             <div className="mt-1 text-[14px] font-medium text-[#59616b] group-hover:text-[#111318]">
               velog.io/@ninguis555 ↗
             </div>

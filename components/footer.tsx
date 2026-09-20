@@ -26,7 +26,7 @@ export function Footer() {
                 rel={link.href.startsWith("http") ? "noreferrer noopener" : undefined}
                 className="group"
               >
-                <div className="text-[10px] font-medium text-[#9aa0a8]">{link.label}</div>
+                <div className="text-[13px] font-medium text-[#59616b]">{link.label}</div>
                 <div className="mt-1 max-w-[210px] truncate text-[13px] text-[#606873] group-hover:text-[#111318]">
                   {link.value}
                 </div>

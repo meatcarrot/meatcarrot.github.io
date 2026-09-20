@@ -3,7 +3,7 @@ import { Hero } from "@/components/hero"
 import { Container } from "@/components/primitives"
 import { FeaturedProject } from "@/components/featured-project"
 import { ProjectCard } from "@/components/project-card"
-import { Approach } from "@/components/approach"
+import { AboutMe } from "@/components/about-me"
 import { ExperienceTimeline } from "@/components/experience-timeline"
 import { Footer } from "@/components/footer"
 import { featuredProjects, secondaryProjects } from "@/data/projects"
@@ -14,6 +14,7 @@ export default function HomePage() {
       <Header />
       <main id="main-content">
         <Hero />
+        <AboutMe />
 
         <section
           id="projects"
@@ -26,7 +27,7 @@ export default function HomePage() {
                   프로젝트
                 </h2>
                 <p className="mt-3 max-w-[620px] text-[15px] leading-[1.75] text-[#616873] sm:text-[16px]">
-                  시스템의 실패 조건을 정의하고, 구조를 바꾸고, 결과를 검증한 경험입니다.
+                  각 프로젝트에서 맡은 역할과 기술적 판단, 구현 결과를 정리했습니다.
                 </p>
               </div>
             </div>
@@ -45,7 +46,6 @@ export default function HomePage() {
           </Container>
         </section>
 
-        <Approach />
         <ExperienceTimeline />
       </main>
       <Footer />

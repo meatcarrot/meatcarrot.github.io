@@ -8,7 +8,7 @@ export function FeaturedProject({ project }: { project: Project }) {
   return (
     <article className="grid gap-8 border-b border-[#d9dee4] py-10 lg:grid-cols-12 lg:items-center lg:gap-8">
       <div className={isBank ? "lg:col-span-4" : "lg:col-span-5"}>
-        <div className="text-[12px] font-medium text-[#7b828c]">{project.category}</div>
+        <div className="text-[13px] font-medium text-[#59616b]">{project.category}</div>
 
         <h3 className="mt-3 text-[26px] font-semibold leading-[1.12] tracking-[-0.03em] text-[#111318] sm:text-[30px]">
           {project.title}
@@ -31,19 +31,19 @@ export function FeaturedProject({ project }: { project: Project }) {
           {project.outcome}
         </div>
         {project.outcomeNote ? (
-          <div className="mt-1 text-[12px] leading-relaxed text-[#8a9098]">
+          <div className="mt-1 text-[13px] leading-relaxed text-[#59616b]">
             {project.outcomeNote}
           </div>
         ) : null}
         {project.outcomeLabel ? (
-          <div className="mt-1 text-[12px] leading-relaxed text-[#8a9098]">
+          <div className="mt-1 text-[13px] leading-relaxed text-[#59616b]">
             {project.outcomeLabel}
           </div>
         ) : null}
 
-        <div className="mt-5 hidden flex-wrap gap-x-3 gap-y-1 font-mono text-[10px] text-[#989ea6] xl:flex xl:justify-end">
+        <div className="mt-5 flex flex-wrap gap-2 lg:justify-end">
           {project.technologies.slice(0, 4).map((tech) => (
-            <span key={tech}>{tech}</span>
+            <span key={tech} className="tech-tag">{tech}</span>
           ))}
         </div>
 
@@ -59,7 +59,7 @@ export function FeaturedProject({ project }: { project: Project }) {
               href={project.repository.href}
               target="_blank"
               rel="noreferrer noopener"
-              className="hidden text-[12px] font-medium text-[#8a9098] underline-offset-4 hover:text-[#5c6470] hover:underline xl:inline"
+              className="hidden text-[13px] font-medium text-[#59616b] underline-offset-4 hover:text-[#5c6470] hover:underline xl:inline"
             >
               GitHub ↗
             </a>

@@ -3,8 +3,8 @@ import { Container } from "./primitives"
 import { profile } from "@/data/experience"
 
 const navItems = [
+  { label: "About Me", href: "/#about" },
   { label: "프로젝트", href: "/#projects" },
-  { label: "개발 방식", href: "/#approach" },
   { label: "경험", href: "/#experience" },
   { label: "GitHub", href: profile.github, external: true },
 ]

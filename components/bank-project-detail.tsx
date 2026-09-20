@@ -269,9 +269,9 @@ export function BankProjectDetail({ project }: { project: Project }) {
               </div>
 
               <div>
-                <div className="flex flex-wrap gap-x-4 gap-y-2 font-mono text-[11px] text-[#7b828c] lg:justify-end">
+                <div className="flex flex-wrap gap-2 lg:justify-end">
                   {project.technologies.map((tech) => (
-                    <span key={tech}>{tech}</span>
+                    <span key={tech} className="tech-tag">{tech}</span>
                   ))}
                 </div>
                 {project.repository ? (

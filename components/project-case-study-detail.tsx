@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { DemoVideo } from "./demo-video"
 import { ArrowLeft, ExternalLink } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -438,9 +439,9 @@ export function ProjectCaseStudyDetail({ project }: { project: Project }) {
               </div>
 
               <div>
-                <div className="flex flex-wrap gap-x-4 gap-y-2 font-mono text-[11px] text-[#7b828c] lg:justify-end">
+                <div className="flex flex-wrap gap-2 lg:justify-end">
                   {project.technologies.map((tech) => (
-                    <span key={tech}>{tech}</span>
+                    <span key={tech} className="tech-tag">{tech}</span>
                   ))}
                 </div>
                 {project.repository ? (
@@ -466,7 +467,7 @@ export function ProjectCaseStudyDetail({ project }: { project: Project }) {
                   CASE STUDY
                 </div>
                 <ul className="mt-4 space-y-2">
-                  {nav.map((item) => (
+                  {(project.slug === "airbot" ? [nav[0], { href: "#demo", label: "서비스 시연" }, ...nav.slice(1)] : nav).map((item) => (
                     <li key={item.href}>
                       <a
                         href={item.href}
@@ -496,6 +497,17 @@ export function ProjectCaseStudyDetail({ project }: { project: Project }) {
                   ))}
                 </div>
               </section>
+
+              {project.slug === "airbot" ? (
+                <section id="demo" aria-labelledby="demo-heading" className="mt-14 scroll-mt-24 border-t border-[#dfe3e8] pt-12">
+                  <h2 id="demo-heading" className="text-[26px] font-semibold tracking-[-0.025em] text-[#111318]">서비스 시연</h2>
+                  <p className="mt-3 text-[14px] leading-relaxed text-[#59616b]">사용 흐름을 보여주기 위해 재생 속도를 편집한 영상입니다. 실제 응답 시간 측정 자료와는 구분됩니다.</p>
+                  <div className="mt-6 space-y-8">
+                    <DemoVideo src="/videos/airbot/chat-demo.mp4" poster="/videos/airbot/chat-poster.jpg" title="챗봇 대화 시연" />
+                    <DemoVideo src="/videos/airbot/sidebar-demo.mp4" poster="/videos/airbot/sidebar-poster.jpg" title="공항 정보 사이드바 시연" portrait />
+                  </div>
+                </section>
+              ) : null}
 
               <section id="architecture" className="mt-14 scroll-mt-24 border-t border-[#dfe3e8] pt-12">
                 <SectionTitle number="02" title="시스템 구조" description={descriptions.architecture} />
