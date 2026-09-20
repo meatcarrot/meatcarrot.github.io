@@ -1,5 +1,6 @@
+import { ExperienceTimeline } from "./experience-timeline"
 import { Container } from "./primitives"
-import { experience, profile } from "@/data/experience"
+import { profile } from "@/data/experience"
 
 const skills = [
   { title: "Backend", items: ["Java", "Spring Boot", "Python", "Django"] },
@@ -25,7 +26,9 @@ export function Hero() {
                 <li>모르는 것은 질문하고 배우며, <strong className="font-semibold text-[#202733]">새로운 지식과 방법에 열려 있습니다.</strong></li>
                 <li>막연히 이해했다고 넘기지 않고, <strong className="font-semibold text-[#202733]">데이터와 로그로 확인합니다.</strong></li>
               </ul>
-              <dl className="mt-9 grid gap-x-8 gap-y-5 border-t border-[#dfe3e8] pt-6 sm:grid-cols-2">
+            </div>
+            <aside aria-label="기본 정보와 연락처" className="border-t border-[#dfe3e8] pt-8 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-2">
+              <dl className="grid gap-5">
                 <div><dt className="text-[13px] text-[#68707a]">출생일</dt><dd className="mt-1 text-[15px] font-medium">{profile.birthDate}</dd></div>
                 <div><dt className="text-[13px] text-[#68707a]">주소</dt><dd className="mt-1 text-[15px] font-medium">{profile.address}</dd></div>
                 <div><dt className="text-[13px] text-[#68707a]">전화번호</dt><dd className="mt-1 text-[15px] font-medium"><a href={`tel:${profile.phone.replaceAll("-", "")}`} className="hover:underline">{profile.phone}</a></dd></div>
@@ -35,23 +38,11 @@ export function Hero() {
                 <a href={profile.github} target="_blank" rel="noreferrer noopener" className="hover:underline">GitHub ↗</a>
                 <a href={profile.velog} target="_blank" rel="noreferrer noopener" className="hover:underline">Velog ↗</a>
               </div>
-            </div>
-            <section id="experience" aria-labelledby="experience-heading" className="scroll-mt-24 border-t border-[#dfe3e8] pt-8 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-              <h2 id="experience-heading" className="text-[14px] font-semibold tracking-[0.12em] text-[#2563eb]">EXPERIENCE</h2>
-              <ol className="mt-8 border-l border-[#dfe3e8]">
-                {experience.map((item) => (
-                  <li key={`${item.year}-${item.title}`} className="relative pb-9 pl-6 last:pb-0">
-                    <span aria-hidden="true" className="absolute -left-[5px] top-1.5 h-[9px] w-[9px] rounded-full bg-[#2563eb]" />
-                    <p className="text-[14px] font-medium text-[#68707a]">{item.year}</p>
-                    <h3 className="mt-2 text-[20px] font-semibold tracking-[-0.02em]">{item.title}</h3>
-                    <p className="mt-2 text-[15px] leading-[1.7] text-[#59616b]">{item.detail}</p>
-                  </li>
-                ))}
-              </ol>
-            </section>
+            </aside>
           </div>
         </Container>
       </section>
+      <ExperienceTimeline />
       <section id="skills" aria-labelledby="skills-heading" className="scroll-mt-20 border-t border-[#dfe3e8] bg-white">
         <Container className="py-9 sm:py-12">
           <h2 id="skills-heading" className="text-[14px] font-semibold tracking-[0.12em] text-[#2563eb]">SKILLS</h2>

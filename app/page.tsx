@@ -1,7 +1,7 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { Container } from "@/components/primitives"
-import { ProjectCard } from "@/components/project-card"
+import { FeaturedProject } from "@/components/featured-project"
 import { Footer } from "@/components/footer"
 import { featuredProjects, secondaryProjects } from "@/data/projects"
 
@@ -30,7 +30,7 @@ export default function HomePage() {
 
             <div className="mt-5 grid gap-0 divide-y divide-[#dfe3e8]">
               {[...featuredProjects, ...secondaryProjects].map((project) => (
-                <ProjectCard key={project.slug} project={project} />
+                <FeaturedProject key={project.slug} project={project} />
               ))}
             </div>
           </Container>
