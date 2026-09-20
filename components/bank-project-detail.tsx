@@ -6,7 +6,7 @@ import { Container } from "@/components/primitives"
 import { EvidenceLink } from "@/components/blocks"
 import { getProjectChallenges } from "@/components/challenge-block"
 import type { Project } from "@/data/projects"
-import { ProjectFlowDiagram } from "./project-flow-diagram"
+import { BankArchitectureDiagram } from "./bank-architecture-diagram"
 
 const nav = [
   { href: "#problem", label: "핵심 문제" },
@@ -338,7 +338,7 @@ export function BankProjectDetail({ project }: { project: Project }) {
                   title="시스템 구조"
                   description="상태를 먼저 DB에 기록하고, 메시지 전달 실패는 복구 가능한 상태로 남기도록 구조를 나눴습니다."
                 />
-                <ProjectFlowDiagram project="bank" variant="detail" className="mt-6" />
+                <BankArchitectureDiagram className="mt-6" />
               </section>
 
               <section id="decisions" className="scroll-mt-24 border-t border-[#dfe3e8] pt-12 mt-14">
