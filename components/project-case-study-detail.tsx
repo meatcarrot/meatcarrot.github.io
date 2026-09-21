@@ -8,6 +8,7 @@ import { EvidenceLink } from "@/components/blocks"
 import { getProjectChallenges } from "@/components/challenge-block"
 import type { Project } from "@/data/projects"
 import { ProjectFlowDiagram } from "./project-flow-diagram"
+import { AirbotArchitectureDiagram } from "./airbot-architecture-diagram"
 
 const nav = [
   { href: "#problem", label: "핵심 문제" },
@@ -30,7 +31,7 @@ function SectionTitle({
 }) {
   return (
     <div className="grid gap-3 sm:grid-cols-[36px_1fr]">
-      <div className="pt-1 font-mono text-[11px] text-[#2563eb]">{number}</div>
+      <div className="pt-1 text-[11px] font-semibold text-[#2563eb]">{number}</div>
       <div>
         <h2 className="text-[28px] font-semibold leading-tight tracking-[-0.03em] text-[#111318] sm:text-[32px]">
           {title}
@@ -283,11 +284,11 @@ function DecisionStory({
 
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
             <div>
-              <div className="font-mono text-[10px] tracking-[0.08em] text-[#8a9098]">문제</div>
+              <div className="text-[10px] font-medium text-[#8a9098]">문제</div>
               <p className="mt-2 text-[14px] leading-[1.75] text-[#5f6670]">{challenge.problem}</p>
               {challenge.investigation ? (
                 <>
-                  <div className="mt-5 font-mono text-[10px] tracking-[0.08em] text-[#8a9098]">
+                  <div className="mt-5 text-[10px] font-medium text-[#8a9098]">
                     CHECKED
                   </div>
                   <p className="mt-2 text-[14px] leading-[1.75] text-[#5f6670]">
@@ -298,7 +299,7 @@ function DecisionStory({
             </div>
 
             <div className="border-l border-[#d7dce2] pl-5">
-              <div className="font-mono text-[10px] tracking-[0.08em] text-[#2563eb]">선택</div>
+              <div className="text-[10px] font-medium text-[#2563eb]">선택</div>
               <p className="mt-2 text-[15px] font-medium leading-[1.75] text-[#252b33]">
                 {challenge.solution}
               </p>
@@ -308,13 +309,13 @@ function DecisionStory({
           <div className="mt-6 grid gap-5 border-t border-[#e2e5e9] pt-5 sm:grid-cols-3">
             {challenge.why ? (
               <div>
-                <div className="font-mono text-[9px] tracking-[0.08em] text-[#9aa0a8]">선택 이유</div>
+                <div className="text-[9px] font-medium text-[#9aa0a8]">선택 이유</div>
                 <p className="mt-2 text-[13px] leading-[1.7] text-[#68707a]">{challenge.why}</p>
               </div>
             ) : null}
             {challenge.tradeOff ? (
               <div>
-                <div className="font-mono text-[9px] tracking-[0.08em] text-[#9aa0a8]">
+                <div className="text-[9px] font-medium text-[#9aa0a8]">
                   TRADE-OFF
                 </div>
                 <p className="mt-2 text-[13px] leading-[1.7] text-[#68707a]">
@@ -324,7 +325,7 @@ function DecisionStory({
             ) : null}
             {challenge.validation ? (
               <div>
-                <div className="font-mono text-[9px] tracking-[0.08em] text-[#2563eb]">
+                <div className="text-[9px] font-medium text-[#2563eb]">
                   VERIFIED
                 </div>
                 <p className="mt-2 text-[13px] leading-[1.7] text-[#4f5863]">
@@ -411,15 +412,15 @@ export function ProjectCaseStudyDetail({ project }: { project: Project }) {
 
                 <dl className="mt-7 grid gap-4 text-[13px]">
                   <div>
-                    <dt className="font-mono text-[9px] tracking-[0.09em] text-[#9aa0a8]">역할</dt>
+                    <dt className="text-[9px] font-medium text-[#9aa0a8]">역할</dt>
                     <dd className="mt-1 text-[#434b55]">{project.role}</dd>
                   </div>
                   <div>
-                    <dt className="font-mono text-[9px] tracking-[0.09em] text-[#9aa0a8]">기간</dt>
+                    <dt className="text-[9px] font-medium text-[#9aa0a8]">기간</dt>
                     <dd className="mt-1 text-[#434b55]">{project.period}</dd>
                   </div>
                   <div>
-                    <dt className="font-mono text-[9px] tracking-[0.09em] text-[#9aa0a8]">팀</dt>
+                    <dt className="text-[9px] font-medium text-[#9aa0a8]">팀</dt>
                     <dd className="mt-1 text-[#434b55]">{project.team}</dd>
                   </div>
                 </dl>
@@ -428,7 +429,7 @@ export function ProjectCaseStudyDetail({ project }: { project: Project }) {
 
             <div className="mt-9 grid gap-7 border-t border-[#dfe3e8] pt-6 lg:grid-cols-[1fr_auto] lg:items-end">
               <div>
-                <div className="font-mono text-[9px] tracking-[0.09em] text-[#9aa0a8]">담당 영역</div>
+                <div className="text-[9px] font-medium text-[#9aa0a8]">담당 영역</div>
                 <ul className="mt-3 grid gap-x-8 gap-y-2 sm:grid-cols-2">
                   {project.myRole.map((item) => (
                     <li key={item} className="text-[14px] leading-[1.65] text-[#5f6670]">
@@ -463,7 +464,7 @@ export function ProjectCaseStudyDetail({ project }: { project: Project }) {
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
             <aside className="hidden lg:col-span-3 lg:block">
               <nav className="sticky top-24 border-t border-[#d7dce2] pt-5" aria-label="페이지 내 이동">
-                <div className="font-mono text-[10px] tracking-[0.1em] text-[#9aa0a8]">
+                <div className="text-[10px] font-semibold text-[#9aa0a8]">
                   CASE STUDY
                 </div>
                 <ul className="mt-4 space-y-2">
@@ -483,7 +484,7 @@ export function ProjectCaseStudyDetail({ project }: { project: Project }) {
 
             <div className="lg:col-span-9">
               <section id="problem" className="scroll-mt-24">
-                <SectionTitle number="01" title="핵심 문제" description={descriptions.problem} />
+                <SectionTitle number="01" title="핵심 문제" />
 
                 <p className="mt-7 max-w-[800px] text-[16px] leading-[1.85] text-[#505863]">
                   {project.overview}
@@ -510,8 +511,12 @@ export function ProjectCaseStudyDetail({ project }: { project: Project }) {
               ) : null}
 
               <section id="architecture" className="mt-14 scroll-mt-24 border-t border-[#dfe3e8] pt-12">
-                <SectionTitle number="02" title="시스템 구조" description={descriptions.architecture} />
-                <ProjectFlowDiagram project={project.slug} variant="detail" className="mt-6" />
+                <SectionTitle number="02" title="시스템 구조" />
+                {project.slug === "airbot" ? (
+                  <AirbotArchitectureDiagram className="mt-6" />
+                ) : (
+                  <ProjectFlowDiagram project={project.slug} variant="detail" className="mt-6" />
+                )}
               </section>
 
               <section id="decisions" className="mt-14 scroll-mt-24 border-t border-[#dfe3e8] pt-12">
@@ -536,7 +541,6 @@ export function ProjectCaseStudyDetail({ project }: { project: Project }) {
                 <SectionTitle
                   number="04"
                   title="검증과 한계"
-                  description="확인한 결과와 아직 일반화하지 않은 범위를 분리해 기록했습니다."
                 />
 
                 <div className="mt-7 grid gap-8 md:grid-cols-2">
@@ -574,7 +578,6 @@ export function ProjectCaseStudyDetail({ project }: { project: Project }) {
                 <SectionTitle
                   number="05"
                   title="확인 가능한 자료"
-                  description="프로젝트 기록과 코드에서 설계 판단 및 검증 근거를 확인할 수 있습니다."
                 />
 
                 <div className="mt-6 flex flex-wrap gap-x-7 gap-y-3">
