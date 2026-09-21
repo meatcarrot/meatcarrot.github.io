@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+
+  <defs>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#5B82C4"/>
+    </marker>
+    <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#9AA5B1"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.06"/>
+    </filter>
+    <style>
+      .section { font: 700 19px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#2563EB; }
+      .node-title { font: 700 17px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#20262E; }
+      .node-meta { font: 600 13px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#5F6B79; }
+      .tiny { font: 600 11px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#64748B; }
+      .boundary-label { font: 700 12px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#4F6FA8; }
+      .blue-line { stroke:#5B82C4; stroke-width:2.1; fill:none; marker-end:url(#arrow-blue); }
+      .gray-line { stroke:#AEB7C1; stroke-width:1.7; fill:none; marker-end:url(#arrow-gray); }
+      .dash-line { stroke:#9AA5B1; stroke-width:1.7; fill:none; stroke-dasharray:7 7; marker-end:url(#arrow-gray); }
+      .plain-gray { stroke:#AEB7C1; stroke-width:1.7; fill:none; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="900" fill="#FBFBFA"/>
+
+  <text x="70" y="72" class="section">01 데이터 통합 · 특징 생성</text>
+  <text x="70" y="430" class="section">02 극단 상황 분류 · 상황별 회귀 예측</text>
+
+  <rect x="70" y="105" width="260" height="245" rx="20" fill="#F5F8FD" stroke="#AFC6EC" stroke-width="1.5" stroke-dasharray="7 7"/>
+  <rect x="90" y="92" width="108" height="24" rx="12" fill="#EAF2FF"/>
+  <text x="144" y="108" text-anchor="middle" class="boundary-label">입력 데이터</text>
+
+  <g filter="url(#shadow)"><rect x="105" y="135" width="190" height="62" rx="14" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/></g>
+  <text x="200" y="160" text-anchor="middle" class="node-title">119 신고 데이터</text>
+  <text x="200" y="181" text-anchor="middle" class="node-meta">call119 · cat119</text>
+
+  <g filter="url(#shadow)"><rect x="105" y="215" width="190" height="54" rx="14" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/></g>
+  <text x="200" y="247" text-anchor="middle" class="node-title">기상 관측 · 특보</text>
+
+  <g filter="url(#shadow)"><rect x="105" y="287" width="190" height="54" rx="14" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/></g>
+  <text x="200" y="319" text-anchor="middle" class="node-title">사고다발지역</text>
+
+  <g filter="url(#shadow)"><rect x="415" y="175" width="190" height="92" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/></g>
+  <text x="510" y="211" text-anchor="middle" class="node-title">전처리 · 통합</text>
+  <text x="510" y="235" text-anchor="middle" class="node-meta">지역 · 날짜 기준 결합</text>
+
+  <g filter="url(#shadow)"><rect x="700" y="175" width="215" height="92" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/></g>
+  <text x="807" y="211" text-anchor="middle" class="node-title">피처 엔지니어링</text>
+  <text x="807" y="235" text-anchor="middle" class="node-meta">신고유형 · 특보 · 위험</text>
+
+  <g filter="url(#shadow)"><rect x="1010" y="175" width="220" height="92" rx="16" fill="#FAFBFC" stroke="#C3CDD8" stroke-width="1.5" stroke-dasharray="7 6"/></g>
+  <text x="1120" y="211" text-anchor="middle" class="node-title">STL 성분 예측</text>
+  <text x="1120" y="235" text-anchor="middle" class="node-meta">Trend · Seasonal · Residual</text>
+
+  <path d="M295 166 H355 V221 H415" class="gray-line"/>
+  <path d="M295 242 H355 V221 H415" class="gray-line"/>
+  <path d="M295 314 H355 V221 H415" class="gray-line"/>
+  <path d="M605 221 H700" class="blue-line"/>
+  <path d="M915 221 H1010" class="blue-line"/>
+
+  <line x1="70" y1="385" x2="1330" y2="385" stroke="#E1E5EA" stroke-width="1.2"/>
+
+  <g filter="url(#shadow)"><rect x="215" y="565" width="220" height="96" rx="16" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/></g>
+  <text x="325" y="602" text-anchor="middle" class="node-title">극단 상황 분류</text>
+  <text x="325" y="626" text-anchor="middle" class="node-meta">XGBoost Classifier</text>
+
+  <g filter="url(#shadow)"><rect x="660" y="535" width="190" height="90" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/></g>
+  <text x="755" y="569" text-anchor="middle" class="node-title">평상시 회귀</text>
+  <text x="755" y="593" text-anchor="middle" class="node-meta">Normal XGB</text>
+
+  <g filter="url(#shadow)"><rect x="660" y="685" width="190" height="90" rx="16" fill="#EAF2FF" stroke="#9AB9EE" stroke-width="1.5"/></g>
+  <text x="755" y="719" text-anchor="middle" class="node-title">재난시 회귀</text>
+  <text x="755" y="743" text-anchor="middle" class="node-meta">Extreme XGB</text>
+
+  <g filter="url(#shadow)"><rect x="1070" y="610" width="220" height="96" rx="16" fill="#EAF2FF" stroke="#9AB9EE" stroke-width="1.5"/></g>
+  <text x="1180" y="647" text-anchor="middle" class="node-title">119 신고량 예측</text>
+  <text x="1180" y="671" text-anchor="middle" class="node-meta">최종 회귀 결과</text>
+
+  <path d="M1120 267 V505 H325 V565" class="blue-line"/>
+  <text x="715" y="495" class="tiny">상황 분류 입력</text>
+
+  <path d="M435 613 H560 V580 H660" class="gray-line"/>
+  <text x="585" y="571" class="tiny">Normal</text>
+
+  <path d="M435 613 H560 V730 H660" class="blue-line"/>
+  <text x="580" y="721" class="tiny">Extreme</text>
+
+  <path d="M850 580 H960 V643 H1070" class="gray-line"/>
+  <path d="M850 730 H960 V673 H1070" class="blue-line"/>
+</svg>
