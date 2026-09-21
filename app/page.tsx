@@ -2,6 +2,7 @@ import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { Container } from "@/components/primitives"
 import { FeaturedProject } from "@/components/featured-project"
+import { ProjectCard } from "@/components/project-card"
 import { Footer } from "@/components/footer"
 import { featuredProjects, secondaryProjects } from "@/data/projects"
 
@@ -28,10 +29,30 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="mt-5 grid gap-0 divide-y divide-[#dfe3e8]">
-              {[...featuredProjects, ...secondaryProjects].map((project) => (
-                <FeaturedProject key={project.slug} project={project} />
-              ))}
+            <div className="mt-5">
+              <div className="border-b border-[#dfe3e8] pb-3">
+                <h3 className="text-[14px] font-semibold tracking-[-0.01em] text-[#2563eb]">
+                  주요 프로젝트
+                </h3>
+              </div>
+              <div className="grid gap-0">
+                {featuredProjects.map((project) => (
+                  <FeaturedProject key={project.slug} project={project} />
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-12">
+              <div className="border-b border-[#dfe3e8] pb-3">
+                <h3 className="text-[14px] font-semibold tracking-[-0.01em] text-[#59616b]">
+                  추가 프로젝트
+                </h3>
+              </div>
+              <div className="grid gap-0 divide-y divide-[#dfe3e8]">
+                {secondaryProjects.map((project) => (
+                  <ProjectCard key={project.slug} project={project} />
+                ))}
+              </div>
             </div>
           </Container>
         </section>
