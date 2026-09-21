@@ -30,8 +30,8 @@ export default function HomePage() {
             </div>
 
             <div className="mt-5">
-              <div className="border-b border-[#dfe3e8] pb-3">
-                <h3 className="text-[14px] font-semibold tracking-[-0.01em] text-[#2563eb]">
+              <div className="pb-5">
+                <h3 className="inline-flex rounded-[14px] border border-[#d9e7fb] bg-[#eef5ff] px-5 py-3 text-[20px] font-semibold leading-none tracking-[-0.02em] text-[#2563eb] sm:text-[22px]">
                   주요 프로젝트
                 </h3>
               </div>
@@ -42,9 +42,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="mt-12">
-              <div className="border-b border-[#dfe3e8] pb-3">
-                <h3 className="text-[14px] font-semibold tracking-[-0.01em] text-[#59616b]">
+            <div className="mt-14">
+              <div className="pb-5">
+                <h3 className="inline-flex rounded-[14px] border border-[#e0e4e8] bg-[#f1f3f5] px-5 py-3 text-[20px] font-semibold leading-none tracking-[-0.02em] text-[#59616b] sm:text-[22px]">
                   추가 프로젝트
                 </h3>
               </div>
