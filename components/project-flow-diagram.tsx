@@ -30,6 +30,8 @@ type DiagramNodeData = {
   title: string
   meta?: string
   kind?: DiagramKind
+  centered?: boolean
+  compact?: boolean
 } & Record<string, unknown>
 
 type Waypoint = { x: number; y: number }
@@ -51,20 +53,22 @@ function DiagramNode({ data }: NodeProps) {
   const node = data as DiagramNodeData
   const kind = node.kind ?? "process"
   const dark = kind === "broker"
+  const centered = node.centered ?? false
+  const compact = node.compact ?? false
 
   const shell: Record<DiagramKind, string> = {
     endpoint:
-      "rounded-full bg-[#fbfbfa] px-5 py-4 ring-1 ring-[#d2d9e1]",
+      `rounded-full bg-[#fbfbfa] ${compact ? "px-3.5 py-2.5" : "px-5 py-4"} ring-1 ring-[#d2d9e1]`,
     process:
-      "rounded-[14px] bg-white px-5 py-4 shadow-[0_10px_28px_rgba(15,23,42,0.06)] ring-1 ring-[#d8e0e8]",
+      `rounded-[14px] bg-white ${compact ? "px-3.5 py-2.5" : "px-5 py-4"} shadow-[0_10px_28px_rgba(15,23,42,0.06)] ring-1 ring-[#d8e0e8]`,
     state:
-      "rounded-[16px] bg-[#f1f6ff] px-5 py-4 shadow-[0_10px_28px_rgba(37,99,235,0.055)] ring-1 ring-[#abc5f2]",
+      `rounded-[16px] bg-[#f1f6ff] ${compact ? "px-3.5 py-2.5" : "px-5 py-4"} shadow-[0_10px_28px_rgba(37,99,235,0.055)] ring-1 ring-[#abc5f2]`,
     broker:
-      "rounded-full bg-[#202833] px-5 py-4 shadow-[0_11px_28px_rgba(15,23,42,0.16)]",
+      `rounded-full bg-[#202833] ${compact ? "px-3.5 py-2.5" : "px-5 py-4"} shadow-[0_11px_28px_rgba(15,23,42,0.16)]`,
     tool:
-      "rounded-[14px] bg-[#fafbfc] px-5 py-4 ring-1 ring-dashed ring-[#c3cdd8]",
+      `rounded-[14px] bg-[#fafbfc] ${compact ? "px-3.5 py-2.5" : "px-5 py-4"} ring-1 ring-dashed ring-[#c3cdd8]`,
     output:
-      "rounded-[14px] bg-[#eaf2ff] px-5 py-4 shadow-[0_10px_28px_rgba(37,99,235,0.07)] ring-1 ring-[#9ab9ee]",
+      `rounded-[14px] bg-[#eaf2ff] ${compact ? "px-3.5 py-2.5" : "px-5 py-4"} shadow-[0_10px_28px_rgba(37,99,235,0.07)] ring-1 ring-[#9ab9ee]`,
   }
 
   return (
@@ -79,7 +83,7 @@ function DiagramNode({ data }: NodeProps) {
       <Handle type="source" id="s-bottom" position={Position.Bottom} style={HANDLE_STYLE} />
 
       <div
-        className={`text-[16px] font-semibold leading-[1.35] tracking-[-0.015em] ${
+        className={`${compact ? "text-[13px]" : "text-[16px]"} font-semibold leading-[1.35] tracking-[-0.015em] ${centered ? "text-center" : ""} ${
           dark ? "text-white" : "text-[#20262e]"
         }`}
       >
@@ -88,7 +92,7 @@ function DiagramNode({ data }: NodeProps) {
 
       {node.meta ? (
         <div
-          className={`mt-1.5 font-mono text-[12px] leading-[1.45] tracking-[0.015em] ${
+          className={`${compact ? "mt-1 text-[10px]" : "mt-1.5 text-[12px]"} font-mono leading-[1.45] tracking-[0.015em] ${centered ? "text-center" : ""} ${
             dark ? "text-white/60" : "text-[#778391]"
           }`}
         >
@@ -152,12 +156,13 @@ function N(
   meta: string | undefined,
   kind: DiagramKind,
   width = 180,
+  options: { centered?: boolean; compact?: boolean } = {},
 ): Node<DiagramNodeData> {
   return {
     id,
     type: "diagram",
     position: { x, y },
-    data: { title, meta, kind },
+    data: { title, meta, kind, centered: options.centered, compact: options.compact },
     style: { width },
     zIndex: 2,
   }
@@ -544,10 +549,10 @@ function llmDetail(): FlowConfig {
 
 function heroBank(): FlowConfig {
   const nodes = [
-    N("request", 0, 35, "송금 요청", undefined, "endpoint", 105),
-    N("commit", 135, 20, "원장 + Outbox", undefined, "state", 140),
-    N("kafka", 310, 35, "Kafka", undefined, "broker", 90),
-    N("consumer", 435, 20, "멱등 소비", undefined, "output", 120),
+    N("request", 0, 35, "송금 요청", undefined, "endpoint", 105, { centered: true }),
+    N("commit", 135, 20, "원장 + Outbox", undefined, "state", 140, { centered: true }),
+    N("kafka", 310, 35, "Kafka", undefined, "broker", 90, { centered: true }),
+    N("consumer", 435, 20, "멱등 소비", undefined, "output", 120, { centered: true }),
   ]
 
   const edges = [
@@ -561,10 +566,10 @@ function heroBank(): FlowConfig {
 
 function homeBank(): FlowConfig {
   const nodes = [
-    N("request", 0, 55, "송금 요청", undefined, "endpoint", 135),
-    N("commit", 215, 35, "원장 + Outbox", undefined, "state", 180),
-    N("kafka", 485, 55, "Kafka", undefined, "broker", 120),
-    N("consumer", 695, 35, "멱등 소비", undefined, "output", 170),
+    N("request", 0, 55, "송금 요청", undefined, "endpoint", 135, { centered: true }),
+    N("commit", 215, 35, "원장 + Outbox", undefined, "state", 180, { centered: true }),
+    N("kafka", 485, 55, "Kafka", undefined, "broker", 120, { centered: true }),
+    N("consumer", 695, 35, "멱등 소비", undefined, "output", 170, { centered: true }),
   ]
 
   const edges = [
@@ -578,10 +583,10 @@ function homeBank(): FlowConfig {
 
 function compactAirBot(): FlowConfig {
   const nodes = [
-    N("q", 0, 65, "질문", undefined, "endpoint", 125),
-    N("cache", 205, 45, "Semantic Cache", undefined, "state", 185),
-    N("hit", 490, 0, "즉시 응답", "< 1s", "output", 155),
-    N("miss", 490, 120, "LangGraph / RAG", undefined, "process", 180),
+    N("q", 0, 65, "질문", undefined, "endpoint", 125, { centered: true }),
+    N("cache", 205, 45, "Semantic Cache", undefined, "state", 185, { centered: true }),
+    N("hit", 490, 0, "즉시 응답", "< 1s", "output", 155, { centered: true }),
+    N("miss", 490, 120, "LangGraph / RAG", undefined, "process", 180, { centered: true }),
   ]
 
   const edges = [
@@ -601,7 +606,18 @@ function compactOther(project: string, vertical = false): FlowConfig {
   const positions = vertical
     ? [[0, 0], [0, 90], [0, 180], [0, 270]]
     : weather ? [[0, 50], [190, 50], [410, 0], [410, 100]] : [[0, 0], [215, 0], [215, 105], [0, 105]]
-  const nodes = labels.map((title, i) => N(`c${i}`, positions[i][0], positions[i][1], title, undefined, i === 1 ? "state" : i === 3 ? "output" : "process", vertical ? 235 : 160))
+  const nodes = labels.map((title, i) =>
+    N(
+      `c${i}`,
+      positions[i][0],
+      positions[i][1],
+      title,
+      undefined,
+      i === 1 ? "state" : i === 3 ? "output" : "process",
+      vertical ? (weather ? 235 : 205) : (weather ? 160 : 145),
+      { centered: true, compact: !weather },
+    ),
+  )
   const down = { sourceHandle: "s-bottom", targetHandle: "t-top" }
   const edges = weather
     ? [E("c01", "c0", "c1", vertical ? down : {}), E("c12", "c1", "c2", { ...(vertical ? down : {}), label: "평상시" }), E("c13", "c1", "c3", { ...(vertical ? { sourceHandle: "s-right", targetHandle: "t-right" } : {}), label: "재난", accent: true })]
@@ -649,6 +665,7 @@ function mobile(project: string, variant: "hero" | "home" | "compact" | "detail"
         undefined,
         index === 2 ? "broker" : index === 1 ? "state" : index === 3 ? "output" : "endpoint",
         260,
+        { centered: true },
       ),
     )
     const edges = items.slice(0, -1).map((_, index) =>
@@ -663,10 +680,10 @@ function mobile(project: string, variant: "hero" | "home" | "compact" | "detail"
 
   if (variant === "compact" && project === "airbot") {
     const nodes = [
-      N("m0", 0, 0, "질문", undefined, "endpoint", 260),
-      N("m1", 0, 115, "Semantic Cache", undefined, "state", 260),
-      N("m2", 0, 230, "적중 → 즉시 응답", "< 1s", "output", 260),
-      N("m3", 0, 345, "미적중 → LangGraph / RAG", undefined, "process", 260),
+      N("m0", 0, 0, "질문", undefined, "endpoint", 260, { centered: true }),
+      N("m1", 0, 115, "Semantic Cache", undefined, "state", 260, { centered: true }),
+      N("m2", 0, 230, "적중 → 즉시 응답", "< 1s", "output", 260, { centered: true }),
+      N("m3", 0, 345, "미적중 → LangGraph / RAG", undefined, "process", 260, { centered: true }),
     ]
     return {
       nodes,
