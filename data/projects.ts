@@ -149,7 +149,7 @@ export const projects: Project[] = [
     number: "02",
     category: "AI 서비스 · 성능 최적화",
     title: "인천공항 AI 챗봇 ‘아라’",
-    outcome: "30–40초 → 1초 이내*",
+    outcome: "30–40초 → 1초 이내",
     outcomeLabel: "유사 질의 응답 · 프로젝트 테스트 환경",
     summary:
       "반복 LangGraph 실행으로 30–40초 걸리던 유사 질의를 Semantic Cache를 통해 1초 이내로 단축했습니다.",
