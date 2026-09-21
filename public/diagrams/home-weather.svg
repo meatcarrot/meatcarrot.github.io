@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="180" viewBox="0 0 600 180">
+
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0 0 L7 3.5 L0 7 Z" fill="#5B82C4"/>
+    </marker>
+    <style>
+      .t{font:600 14px "Pretendard Variable","Noto Sans KR",sans-serif;fill:#20262E}
+      .m{font:500 10px "Pretendard Variable","Noto Sans KR",sans-serif;fill:#64748B}
+      .b{fill:#fff;stroke:#D8E0E8;stroke-width:1.2}
+      .s{fill:#F1F6FF;stroke:#ABC5F2;stroke-width:1.2}
+      .o{fill:#EAF2FF;stroke:#9AB9EE;stroke-width:1.2}
+      .k{fill:#202833}
+      .kt{font:600 14px "Pretendard Variable","Noto Sans KR",sans-serif;fill:#fff}
+      .line{fill:none;stroke:#5B82C4;stroke-width:1.8;marker-end:url(#arrow)}
+      .gray{fill:none;stroke:#AEB7C1;stroke-width:1.5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="600" height="180" fill="none"/>
+  <rect x="18" y="60" width="145" height="60" rx="14" class="b"/>
+  <text x="90" y="87" text-anchor="middle" class="t">기상 · 119 데이터</text>
+  <text x="90" y="106" text-anchor="middle" class="m">input</text>
+  <rect x="215" y="52" width="155" height="76" rx="14" class="s"/>
+  <text x="292" y="84" text-anchor="middle" class="t">극단 상황 분류</text>
+  <text x="292" y="105" text-anchor="middle" class="m">XGBoost</text>
+  <rect x="430" y="18" width="140" height="54" rx="14" class="b"/>
+  <text x="500" y="50" text-anchor="middle" class="t">평상시 회귀</text>
+  <rect x="430" y="108" width="140" height="54" rx="14" class="o"/>
+  <text x="500" y="140" text-anchor="middle" class="t">재난시 회귀</text>
+  <path d="M163 90 H215" class="line"/>
+  <path d="M370 90 H400 V45 H430" class="gray"/>
+  <path d="M370 90 H400 V135 H430" class="line"/>
+  <text x="390" y="38" class="m">평상시</text>
+  <text x="397" y="149" class="m">재난</text>
+</svg>

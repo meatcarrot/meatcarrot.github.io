@@ -1,6 +1,6 @@
 import Link from "next/link"
 import type { Project } from "@/data/projects"
-import { ProjectFlowDiagram } from "./project-flow-diagram"
+import { ProjectOverviewDiagram } from "./project-overview-diagram"
 
 export function FeaturedProject({ project }: { project: Project }) {
   const isBank = project.slug === "bank"
@@ -20,7 +20,7 @@ export function FeaturedProject({ project }: { project: Project }) {
       </div>
 
       <div className={isBank ? "lg:col-span-6" : "lg:col-span-4"}>
-        <ProjectFlowDiagram
+        <ProjectOverviewDiagram
           project={project.slug}
           variant={isBank ? "home" : "compact"}
         />

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="170" viewBox="0 0 600 170">
+
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0 0 L7 3.5 L0 7 Z" fill="#5B82C4"/>
+    </marker>
+    <style>
+      .t{font:600 14px "Pretendard Variable","Noto Sans KR",sans-serif;fill:#20262E}
+      .m{font:500 10px "Pretendard Variable","Noto Sans KR",sans-serif;fill:#64748B}
+      .b{fill:#fff;stroke:#D8E0E8;stroke-width:1.2}
+      .s{fill:#F1F6FF;stroke:#ABC5F2;stroke-width:1.2}
+      .o{fill:#EAF2FF;stroke:#9AB9EE;stroke-width:1.2}
+      .k{fill:#202833}
+      .kt{font:600 14px "Pretendard Variable","Noto Sans KR",sans-serif;fill:#fff}
+      .line{fill:none;stroke:#5B82C4;stroke-width:1.8;marker-end:url(#arrow)}
+      .gray{fill:none;stroke:#AEB7C1;stroke-width:1.5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="600" height="170" fill="none"/>
+  <rect x="18" y="58" width="120" height="54" rx="27" class="b"/>
+  <text x="78" y="90" text-anchor="middle" class="t">송금 요청</text>
+  <rect x="175" y="50" width="150" height="70" rx="14" class="s"/>
+  <text x="250" y="81" text-anchor="middle" class="t">원장 + Outbox</text>
+  <text x="250" y="101" text-anchor="middle" class="m">same transaction</text>
+  <rect x="362" y="58" width="90" height="54" rx="27" class="k"/>
+  <text x="407" y="90" text-anchor="middle" class="kt">Kafka</text>
+  <rect x="489" y="50" width="95" height="70" rx="14" class="o"/>
+  <text x="536" y="81" text-anchor="middle" class="t">멱등 소비</text>
+  <text x="536" y="101" text-anchor="middle" class="m">idempotent</text>
+  <path d="M138 85 H175" class="line"/>
+  <path d="M325 85 H362" class="line"/>
+  <path d="M452 85 H489" class="line"/>
+</svg>

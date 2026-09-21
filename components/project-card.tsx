@@ -1,6 +1,6 @@
 import Link from "next/link"
 import type { Project } from "@/data/projects"
-import { ProjectFlowDiagram } from "./project-flow-diagram"
+import { ProjectOverviewDiagram } from "./project-overview-diagram"
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
@@ -16,7 +16,7 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <div className="min-w-0 lg:col-span-5">
-        <ProjectFlowDiagram project={project.slug} variant="compact" />
+        <ProjectOverviewDiagram project={project.slug} variant="compact" />
       </div>
 
       <div className="min-w-0 lg:col-span-3 lg:text-right">

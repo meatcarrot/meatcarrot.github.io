@@ -139,3 +139,26 @@
   line-height: 1.6;
   letter-spacing: 0;
 }
+
+
+/* Print-safe fallback for homepage project diagrams. */
+.project-diagram-print {
+  display: none;
+}
+
+@media print {
+  .project-diagram-screen {
+    display: none !important;
+  }
+
+  .project-diagram-print {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 36mm !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
