@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="920" viewBox="0 0 1400 920">
+  <defs>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#5B82C4"/>
+    </marker>
+    <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#9AA5B1"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.06"/>
+    </filter>
+    <style>
+      .section { font: 700 19px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#2563EB; }
+      .node-title { font: 700 17px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#20262E; }
+      .node-meta { font: 600 13px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#5F6B79; }
+      .tiny { font: 600 11px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#64748B; }
+      .boundary-label { font: 700 12px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#4F6FA8; }
+      .blue-line { stroke:#5B82C4; stroke-width:2.1; fill:none; marker-end:url(#arrow-blue); }
+      .gray-line { stroke:#AEB7C1; stroke-width:1.7; fill:none; marker-end:url(#arrow-gray); }
+      .dash-line { stroke:#9AA5B1; stroke-width:1.7; fill:none; stroke-dasharray:7 7; marker-end:url(#arrow-gray); }
+      .plain-gray { stroke:#AEB7C1; stroke-width:1.7; fill:none; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="920" fill="#FBFBFA"/>
+
+  <text x="70" y="72" class="section">01 질문 처리 · Semantic Cache 조회</text>
+  <text x="70" y="485" class="section">02 Cache Miss · LangGraph / RAG 처리</text>
+
+  <g filter="url(#shadow)"><rect x="70" y="125" width="165" height="76" rx="38" fill="#FBFBFA" stroke="#CFD7E1" stroke-width="1.5"/></g>
+  <text x="152" y="156" text-anchor="middle" class="node-title">사용자 질문</text>
+  <text x="152" y="178" text-anchor="middle" class="node-meta">question</text>
+
+  <g filter="url(#shadow)"><rect x="300" y="115" width="195" height="96" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/></g>
+  <text x="397" y="153" text-anchor="middle" class="node-title">Django AI API</text>
+  <text x="397" y="177" text-anchor="middle" class="node-meta">질문 처리 진입점</text>
+
+  <g filter="url(#shadow)"><rect x="305" y="270" width="185" height="86" rx="16" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/></g>
+  <text x="397" y="303" text-anchor="middle" class="node-title">대화 상태</text>
+  <text x="397" y="327" text-anchor="middle" class="node-meta">Redis · Django Cache</text>
+
+  <g filter="url(#shadow)"><rect x="565" y="115" width="180" height="96" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/></g>
+  <text x="655" y="153" text-anchor="middle" class="node-title">질문 임베딩</text>
+  <text x="655" y="177" text-anchor="middle" class="node-meta">1024-d vector</text>
+
+  <g filter="url(#shadow)"><rect x="820" y="105" width="220" height="116" rx="18" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/></g>
+  <text x="930" y="146" text-anchor="middle" class="node-title">Semantic Cache</text>
+  <text x="930" y="172" text-anchor="middle" class="node-meta">MongoDB Vector Search</text>
+  <text x="930" y="194" text-anchor="middle" class="node-meta">cosine score ≥ 0.97</text>
+
+  <g filter="url(#shadow)"><rect x="1120" y="115" width="190" height="96" rx="16" fill="#EAF2FF" stroke="#9AB9EE" stroke-width="1.5"/></g>
+  <text x="1215" y="153" text-anchor="middle" class="node-title">즉시 응답</text>
+  <text x="1215" y="177" text-anchor="middle" class="node-meta">1초 이내</text>
+
+  <path d="M235 163 H300" class="blue-line"/>
+  <path d="M495 163 H565" class="blue-line"/>
+  <path d="M745 163 H820" class="blue-line"/>
+  <path d="M1040 163 H1120" class="blue-line"/>
+  <text x="1068" y="142" class="tiny">cache hit</text>
+
+  <path d="M397 211 V270" class="dash-line"/>
+  <text x="416" y="248" class="tiny">세션 상태</text>
+
+  <line x1="70" y1="405" x2="1330" y2="405" stroke="#E1E5EA" stroke-width="1.2"/>
+
+  <path d="M930 221 V550 H225 V662" class="blue-line"/>
+  <text x="520" y="542" class="tiny">cache miss</text>
+
+  <g filter="url(#shadow)"><rect x="125" y="662" width="200" height="96" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/></g>
+  <text x="225" y="699" text-anchor="middle" class="node-title">LangGraph 처리</text>
+  <text x="225" y="723" text-anchor="middle" class="node-meta">RAG orchestration</text>
+
+  <rect x="400" y="585" width="360" height="250" rx="20" fill="#F5F8FD" stroke="#AFC6EC" stroke-width="1.5" stroke-dasharray="7 7"/>
+  <rect x="420" y="572" width="152" height="24" rx="12" fill="#EAF2FF"/>
+  <text x="496" y="588" text-anchor="middle" class="boundary-label">검색 · 실시간 데이터</text>
+
+  <g filter="url(#shadow)"><rect x="485" y="610" width="190" height="90" rx="16" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/></g>
+  <text x="580" y="644" text-anchor="middle" class="node-title">문서 근거 검색</text>
+  <text x="580" y="668" text-anchor="middle" class="node-meta">Vector Collections</text>
+
+  <g filter="url(#shadow)"><rect x="485" y="720" width="190" height="90" rx="16" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/></g>
+  <text x="580" y="754" text-anchor="middle" class="node-title">실시간 정보</text>
+  <text x="580" y="778" text-anchor="middle" class="node-meta">API · 정형 데이터</text>
+
+  <g filter="url(#shadow)"><rect x="865" y="665" width="180" height="96" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/></g>
+  <text x="955" y="702" text-anchor="middle" class="node-title">응답 생성</text>
+  <text x="955" y="726" text-anchor="middle" class="node-meta">LLM</text>
+
+  <g filter="url(#shadow)"><rect x="1145" y="665" width="170" height="96" rx="16" fill="#EAF2FF" stroke="#9AB9EE" stroke-width="1.5"/></g>
+  <text x="1230" y="702" text-anchor="middle" class="node-title">최종 응답</text>
+  <text x="1230" y="726" text-anchor="middle" class="node-meta">generated answer</text>
+
+  <g filter="url(#shadow)"><rect x="1065" y="800" width="220" height="86" rx="16" fill="#FAFBFC" stroke="#C3CDD8" stroke-width="1.5" stroke-dasharray="7 6"/></g>
+  <text x="1175" y="833" text-anchor="middle" class="node-title">비동기 캐시 저장</text>
+  <text x="1175" y="857" text-anchor="middle" class="node-meta">질문 · 답변 임베딩</text>
+
+  <path d="M325 710 H380" class="plain-gray"/>
+  <path d="M380 710 V655 H485" class="gray-line"/>
+  <path d="M380 710 V765 H485" class="gray-line"/>
+
+  <path d="M675 655 H800 V698 H865" class="gray-line"/>
+  <path d="M675 765 H800 V728 H865" class="gray-line"/>
+
+  <path d="M1045 713 H1145" class="blue-line"/>
+  <path d="M1230 761 V780 H1175 V800" class="dash-line"/>
+  <text x="1192" y="780" class="tiny">비동기 저장</text>
+
+  <path d="M1285 843 H1350 V360 H1000 V221" class="dash-line"/>
+  <text x="1088" y="350" class="tiny">다음 유사 질의에 재사용</text>
+</svg>
