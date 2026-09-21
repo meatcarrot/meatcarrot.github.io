@@ -599,14 +599,14 @@ function compactOther(project: string, vertical = false): FlowConfig {
     ? ["기상·119 데이터", "극단 상황 분류", "평상시 회귀", "재난시 회귀"]
     : ["코드 생성", "실행·오류 분석", "리뷰·피드백", "코드 개선"]
   const positions = vertical
-    ? [[0, 0], [0, 110], [0, 220], [0, 330]]
-    : weather ? [[0, 65], [205, 65], [450, 0], [450, 130]] : [[0, 0], [240, 0], [240, 140], [0, 140]]
-  const nodes = labels.map((title, i) => N(`c${i}`, positions[i][0], positions[i][1], title, undefined, i === 1 ? "state" : i === 3 ? "output" : "process", vertical ? 260 : 175))
+    ? [[0, 0], [0, 90], [0, 180], [0, 270]]
+    : weather ? [[0, 50], [190, 50], [410, 0], [410, 100]] : [[0, 0], [215, 0], [215, 105], [0, 105]]
+  const nodes = labels.map((title, i) => N(`c${i}`, positions[i][0], positions[i][1], title, undefined, i === 1 ? "state" : i === 3 ? "output" : "process", vertical ? 235 : 160))
   const down = { sourceHandle: "s-bottom", targetHandle: "t-top" }
   const edges = weather
     ? [E("c01", "c0", "c1", vertical ? down : {}), E("c12", "c1", "c2", { ...(vertical ? down : {}), label: "평상시" }), E("c13", "c1", "c3", { ...(vertical ? { sourceHandle: "s-right", targetHandle: "t-right" } : {}), label: "재난", accent: true })]
     : [E("c01", "c0", "c1", vertical ? down : {}), E("c12", "c1", "c2", down), E("c23", "c2", "c3", { ...(vertical ? down : { sourceHandle: "s-left", targetHandle: "t-right" }), accent: true }), E("c30", "c3", "c0", { sourceHandle: vertical ? "s-left" : "s-top", targetHandle: vertical ? "t-left" : "t-bottom", dashed: true, label: "재검증" })]
-  return { nodes, edges, height: vertical ? 455 : 250 }
+  return { nodes, edges, height: vertical ? 365 : 190 }
 }
 
 function mobile(project: string, variant: "hero" | "home" | "compact" | "detail"): FlowConfig {
