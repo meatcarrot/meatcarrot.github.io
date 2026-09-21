@@ -355,7 +355,7 @@ function airbotDetail(): FlowConfig {
     N("embed", 500, 225, "질문 임베딩", undefined, "process", 175),
     N("cache", 760, 225, "Semantic Cache", "MongoDB Vector Search", "state", 215),
 
-    N("hit", 1080, 60, "즉시 응답", "score ≥ 0.97 · < 1s*", "output", 190),
+    N("hit", 1080, 60, "즉시 응답", "score ≥ 0.97 · < 1s", "output", 190),
     N("graph", 1080, 340, "LangGraph 처리", "cache miss", "process", 190),
 
     N("vectors", 720, 550, "문서 근거 검색", "8 Vector Collections", "state", 205),
@@ -580,7 +580,7 @@ function compactAirBot(): FlowConfig {
   const nodes = [
     N("q", 0, 65, "질문", undefined, "endpoint", 125),
     N("cache", 205, 45, "Semantic Cache", undefined, "state", 185),
-    N("hit", 490, 0, "즉시 응답", "< 1s*", "output", 155),
+    N("hit", 490, 0, "즉시 응답", "< 1s", "output", 155),
     N("miss", 490, 120, "LangGraph / RAG", undefined, "process", 180),
   ]
 
@@ -665,7 +665,7 @@ function mobile(project: string, variant: "hero" | "home" | "compact" | "detail"
     const nodes = [
       N("m0", 0, 0, "질문", undefined, "endpoint", 260),
       N("m1", 0, 115, "Semantic Cache", undefined, "state", 260),
-      N("m2", 0, 230, "적중 → 즉시 응답", "< 1s*", "output", 260),
+      N("m2", 0, 230, "적중 → 즉시 응답", "< 1s", "output", 260),
       N("m3", 0, 345, "미적중 → LangGraph / RAG", undefined, "process", 260),
     ]
     return {
