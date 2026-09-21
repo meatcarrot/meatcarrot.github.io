@@ -9,6 +9,8 @@ import { getProjectChallenges } from "@/components/challenge-block"
 import type { Project } from "@/data/projects"
 import { ProjectFlowDiagram } from "./project-flow-diagram"
 import { AirbotArchitectureDiagram } from "./airbot-architecture-diagram"
+import { WeatherArchitectureDiagram } from "./weather-architecture-diagram"
+import { LlmArchitectureDiagram } from "./llm-architecture-diagram"
 
 const nav = [
   { href: "#problem", label: "핵심 문제" },
@@ -514,6 +516,10 @@ export function ProjectCaseStudyDetail({ project }: { project: Project }) {
                 <SectionTitle number="02" title="시스템 구조" />
                 {project.slug === "airbot" ? (
                   <AirbotArchitectureDiagram className="mt-6" />
+                ) : project.slug === "weather" ? (
+                  <WeatherArchitectureDiagram className="mt-6" />
+                ) : project.slug === "llm-qa" ? (
+                  <LlmArchitectureDiagram className="mt-6" />
                 ) : (
                   <ProjectFlowDiagram project={project.slug} variant="detail" className="mt-6" />
                 )}
