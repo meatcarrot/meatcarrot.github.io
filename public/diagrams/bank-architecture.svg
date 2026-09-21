@@ -1,153 +1,140 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860">
   <defs>
-    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5B82C4"/>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#5B82C4"/>
     </marker>
-    <marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9AA5B1"/>
+    <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#9AA5B1"/>
     </marker>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.06"/>
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.06"/>
     </filter>
     <style>
-      .title { font: 700 26px "Pretendard", "Noto Sans KR", sans-serif; fill:#1F2937; }
-      .section { font: 700 18px "Pretendard", "Noto Sans KR", sans-serif; fill:#2563EB; }
-      .node-title { font: 700 17px "Pretendard", "Noto Sans KR", sans-serif; fill:#20262E; }
-      .node-meta { font: 500 12px "SFMono-Regular", Consolas, monospace; fill:#778391; }
-      .node-title-dark { font: 700 17px "Pretendard", "Noto Sans KR", sans-serif; fill:#FFFFFF; }
-      .node-meta-dark { font: 500 12px "SFMono-Regular", Consolas, monospace; fill:#D7DEE8; }
-      .small { font: 600 12px "Pretendard", "Noto Sans KR", sans-serif; fill:#64748B; }
-      .tiny { font: 600 11px "Pretendard", "Noto Sans KR", sans-serif; fill:#64748B; }
-      .boundary-label { font: 700 12px "Pretendard", "Noto Sans KR", sans-serif; fill:#4F6FA8; }
-      .caption { font: 500 14px "Pretendard", "Noto Sans KR", sans-serif; fill:#5B6470; }
-      .blue-line { stroke:#5B82C4; stroke-width:2.2; fill:none; marker-end:url(#arrow-blue); }
-      .gray-line { stroke:#AEB7C1; stroke-width:1.8; fill:none; marker-end:url(#arrow-gray); }
-      .dash-line { stroke:#9AA5B1; stroke-width:1.8; fill:none; stroke-dasharray:8 8; marker-end:url(#arrow-gray); }
+      .section { font: 700 19px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#2563EB; }
+      .node-title { font: 700 17px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#20262E; }
+      .node-meta { font: 600 13px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#5F6B79; }
+      .node-title-dark { font: 700 17px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#FFFFFF; }
+      .node-meta-dark { font: 600 13px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#D7DEE8; }
+      .tiny { font: 600 11px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#64748B; }
+      .boundary-label { font: 700 12px "Pretendard Variable", "Arial Rounded MT Bold", "Trebuchet MS", "Noto Sans KR", sans-serif; fill:#4F6FA8; }
+      .blue-line { stroke:#5B82C4; stroke-width:2.1; fill:none; marker-end:url(#arrow-blue); }
+      .gray-line { stroke:#AEB7C1; stroke-width:1.7; fill:none; marker-end:url(#arrow-gray); }
+      .dash-line { stroke:#9AA5B1; stroke-width:1.7; fill:none; stroke-dasharray:7 7; marker-end:url(#arrow-gray); }
     </style>
   </defs>
 
-  <rect width="1400" height="900" fill="#FBFBFA"/>
-  <text x="70" y="55" class="title">Kafka 기반 송금 시스템 · 처리 흐름</text>
-  <text x="70" y="83" class="caption">요청 기록과 메시지 발행, 실제 계좌 반영을 분리해 실패 시 복구 가능한 구조로 구성</text>
+  <rect width="1400" height="860" fill="#FBFBFA"/>
 
-  <text x="70" y="125" class="section">01  송금 요청 기록 · 이벤트 발행</text>
-  <text x="70" y="525" class="section">02  실제 송금 처리</text>
+  <text x="70" y="72" class="section">01 송금 요청 기록 · 이벤트 발행</text>
+  <text x="70" y="465" class="section">02 실제 송금 처리</text>
 
   <g filter="url(#shadow)">
-    <rect x="70" y="170" width="170" height="76" rx="38" fill="#FBFBFA" stroke="#CFD7E1" stroke-width="1.5"/>
+    <rect x="70" y="110" width="170" height="76" rx="38" fill="#FBFBFA" stroke="#CFD7E1" stroke-width="1.5"/>
   </g>
-  <text x="155" y="201" text-anchor="middle" class="node-title">송금 요청</text>
-  <text x="155" y="222" text-anchor="middle" class="node-meta">POST /transfer</text>
+  <text x="155" y="141" text-anchor="middle" class="node-title">송금 요청</text>
+  <text x="155" y="162" text-anchor="middle" class="node-meta">POST /transfer</text>
 
   <g filter="url(#shadow)">
-    <rect x="300" y="160" width="210" height="96" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/>
+    <rect x="300" y="100" width="210" height="96" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/>
   </g>
-  <text x="405" y="198" text-anchor="middle" class="node-title">송금 요청 접수</text>
-  <text x="405" y="222" text-anchor="middle" class="node-meta">requestTransfer()</text>
+  <text x="405" y="138" text-anchor="middle" class="node-title">송금 요청 접수</text>
+  <text x="405" y="162" text-anchor="middle" class="node-meta">requestTransfer()</text>
 
-  <rect x="575" y="135" width="410" height="185" rx="20" fill="#F5F8FD" stroke="#AFC6EC" stroke-width="1.5" stroke-dasharray="7 7"/>
-  <rect x="595" y="122" width="154" height="24" rx="12" fill="#EAF2FF"/>
-  <text x="672" y="138" text-anchor="middle" class="boundary-label">동일 DB 트랜잭션</text>
+  <rect x="570" y="75" width="420" height="195" rx="20" fill="#F5F8FD" stroke="#AFC6EC" stroke-width="1.5" stroke-dasharray="7 7"/>
+  <rect x="590" y="62" width="154" height="24" rx="12" fill="#EAF2FF"/>
+  <text x="667" y="78" text-anchor="middle" class="boundary-label">동일 DB 트랜잭션</text>
 
   <g filter="url(#shadow)">
-    <rect x="610" y="175" width="160" height="92" rx="16" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/>
+    <rect x="610" y="118" width="160" height="92" rx="16" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/>
   </g>
-  <text x="690" y="210" text-anchor="middle" class="node-title">거래 상태 기록</text>
-  <text x="690" y="234" text-anchor="middle" class="node-meta">TransferLedger</text>
-  <text x="690" y="252" text-anchor="middle" class="node-meta">PENDING</text>
+  <text x="690" y="153" text-anchor="middle" class="node-title">거래 상태 기록</text>
+  <text x="690" y="177" text-anchor="middle" class="node-meta">TransferLedger</text>
+  <text x="690" y="196" text-anchor="middle" class="node-meta">PENDING</text>
 
   <g filter="url(#shadow)">
-    <rect x="805" y="175" width="150" height="92" rx="16" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/>
+    <rect x="810" y="118" width="150" height="92" rx="16" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/>
   </g>
-  <text x="880" y="210" text-anchor="middle" class="node-title">발행할 이벤트 저장</text>
-  <text x="880" y="234" text-anchor="middle" class="node-meta">OutboxEvent</text>
-  <text x="880" y="252" text-anchor="middle" class="node-meta">PENDING</text>
+  <text x="885" y="153" text-anchor="middle" class="node-title">발행할 이벤트 저장</text>
+  <text x="885" y="177" text-anchor="middle" class="node-meta">OutboxEvent</text>
+  <text x="885" y="196" text-anchor="middle" class="node-meta">PENDING</text>
 
   <g filter="url(#shadow)">
-    <rect x="1060" y="160" width="190" height="96" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/>
+    <rect x="1080" y="95" width="190" height="96" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/>
   </g>
-  <text x="1155" y="198" text-anchor="middle" class="node-title">Outbox Relayer</text>
-  <text x="1155" y="222" text-anchor="middle" class="node-meta">AFTER_COMMIT</text>
+  <text x="1175" y="133" text-anchor="middle" class="node-title">Outbox Relayer</text>
+  <text x="1175" y="157" text-anchor="middle" class="node-meta">AFTER_COMMIT</text>
 
   <g filter="url(#shadow)">
-    <rect x="1090" y="325" width="130" height="76" rx="38" fill="#202833"/>
+    <rect x="1108" y="260" width="134" height="78" rx="39" fill="#202833"/>
   </g>
-  <text x="1155" y="357" text-anchor="middle" class="node-title-dark">Kafka</text>
-  <text x="1155" y="379" text-anchor="middle" class="node-meta-dark">transfer-topic</text>
+  <text x="1175" y="293" text-anchor="middle" class="node-title-dark">Kafka</text>
+  <text x="1175" y="316" text-anchor="middle" class="node-meta-dark">transfer-topic</text>
 
   <g filter="url(#shadow)">
-    <rect x="775" y="340" width="210" height="92" rx="16" fill="#FAFBFC" stroke="#C3CDD8" stroke-width="1.5" stroke-dasharray="7 6"/>
+    <rect x="785" y="285" width="210" height="92" rx="16" fill="#FAFBFC" stroke="#C3CDD8" stroke-width="1.5" stroke-dasharray="7 6"/>
   </g>
-  <text x="880" y="374" text-anchor="middle" class="node-title">PENDING 상태 유지</text>
-  <text x="880" y="397" text-anchor="middle" class="node-meta">5초마다 재발행 시도</text>
+  <text x="890" y="319" text-anchor="middle" class="node-title">PENDING 상태 유지</text>
+  <text x="890" y="342" text-anchor="middle" class="node-meta">5초마다 재발행 시도</text>
 
-  <path d="M240 208 H300" class="blue-line"/>
-  <path d="M510 193 H555 V221 H610" class="blue-line"/>
-  <path d="M510 223 H545 V285 H785 V221 H805" class="blue-line"/>
-  <path d="M955 221 H1020 V208 H1060" class="blue-line"/>
-  <text x="996" y="194" class="tiny">COMMIT 이후</text>
-  <path d="M1155 256 V325" class="blue-line"/>
+  <path d="M240 148 H300" class="blue-line"/>
+  <path d="M510 133 H560 V164 H610" class="blue-line"/>
+  <path d="M510 163 H550 V228 H770 V164 H810" class="blue-line"/>
+  <path d="M960 164 H1030 V143 H1080" class="blue-line"/>
+  <text x="1012" y="128" class="tiny">COMMIT 이후</text>
+  <path d="M1175 191 V260" class="blue-line"/>
 
-  <path d="M1060 208 H1018 V386 H985" class="dash-line"/>
-  <text x="1006" y="309" class="tiny" transform="rotate(-90 1006 309)">발행 실패</text>
-  <path d="M880 340 V292 H1155 V256" class="dash-line"/>
-  <text x="910" y="283" class="tiny">재발행</text>
+  <path d="M890 285 V244 H1025 V236 H1048 V236 V330 H995" class="dash-line"/>
+  <text x="927" y="237" class="tiny">재발행</text>
+  <path d="M1080 143 H1048 V330 H995" class="dash-line"/>
+  <text x="1074" y="258" class="tiny" transform="rotate(-90 1074 258)">발행 실패</text>
 
-  <line x1="70" y1="470" x2="1330" y2="470" stroke="#E1E5EA" stroke-width="1.2"/>
-  <path d="M1155 401 V490 H270 V575" class="blue-line"/>
-  <text x="930" y="484" class="tiny">message</text>
+  <line x1="70" y1="405" x2="1330" y2="405" stroke="#E1E5EA" stroke-width="1.2"/>
+  <path d="M1175 338 V430 H270 V515" class="blue-line"/>
+  <text x="932" y="420" class="tiny">message</text>
 
   <g filter="url(#shadow)">
-    <rect x="170" y="575" width="200" height="96" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/>
+    <rect x="170" y="515" width="200" height="96" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/>
   </g>
-  <text x="270" y="612" text-anchor="middle" class="node-title">송금 이벤트 소비</text>
-  <text x="270" y="636" text-anchor="middle" class="node-meta">TransferConsumer</text>
+  <text x="270" y="552" text-anchor="middle" class="node-title">송금 이벤트 소비</text>
+  <text x="270" y="576" text-anchor="middle" class="node-meta">TransferConsumer</text>
 
   <g filter="url(#shadow)">
-    <rect x="440" y="575" width="220" height="96" rx="16" fill="#FAFBFC" stroke="#C3CDD8" stroke-width="1.5" stroke-dasharray="7 6"/>
+    <rect x="440" y="515" width="220" height="96" rx="16" fill="#FAFBFC" stroke="#C3CDD8" stroke-width="1.5" stroke-dasharray="7 6"/>
   </g>
-  <text x="550" y="610" text-anchor="middle" class="node-title">동시성 충돌 재시도</text>
-  <text x="550" y="635" text-anchor="middle" class="node-meta">Optimistic Lock · Backoff</text>
+  <text x="550" y="550" text-anchor="middle" class="node-title">동시성 충돌 재시도</text>
+  <text x="550" y="575" text-anchor="middle" class="node-meta">Optimistic Lock · Backoff</text>
 
   <g filter="url(#shadow)">
-    <rect x="730" y="575" width="210" height="96" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/>
+    <rect x="730" y="515" width="210" height="96" rx="16" fill="#FFFFFF" stroke="#D8E0E8" stroke-width="1.5"/>
   </g>
-  <text x="835" y="612" text-anchor="middle" class="node-title">송금 처리</text>
-  <text x="835" y="636" text-anchor="middle" class="node-meta">processTransfer()</text>
+  <text x="835" y="552" text-anchor="middle" class="node-title">송금 처리</text>
+  <text x="835" y="576" text-anchor="middle" class="node-meta">processTransfer()</text>
 
-  <rect x="1000" y="540" width="325" height="270" rx="20" fill="#F5F8FD" stroke="#AFC6EC" stroke-width="1.5" stroke-dasharray="7 7"/>
-  <rect x="1020" y="527" width="154" height="24" rx="12" fill="#EAF2FF"/>
-  <text x="1097" y="543" text-anchor="middle" class="boundary-label">동일 DB 트랜잭션</text>
+  <rect x="1000" y="480" width="325" height="250" rx="20" fill="#F5F8FD" stroke="#AFC6EC" stroke-width="1.5" stroke-dasharray="7 7"/>
+  <rect x="1020" y="467" width="154" height="24" rx="12" fill="#EAF2FF"/>
+  <text x="1097" y="483" text-anchor="middle" class="boundary-label">동일 DB 트랜잭션</text>
 
   <g filter="url(#shadow)">
-    <rect x="1030" y="585" width="125" height="85" rx="16" fill="#EAF2FF" stroke="#9AB9EE" stroke-width="1.5"/>
+    <rect x="1030" y="530" width="125" height="85" rx="16" fill="#EAF2FF" stroke="#9AB9EE" stroke-width="1.5"/>
   </g>
-  <text x="1092" y="615" text-anchor="middle" class="node-title">계좌 잔액</text>
-  <text x="1092" y="639" text-anchor="middle" class="node-meta">withdraw / deposit</text>
+  <text x="1092" y="560" text-anchor="middle" class="node-title">계좌 잔액</text>
+  <text x="1092" y="584" text-anchor="middle" class="node-meta">withdraw / deposit</text>
 
   <g filter="url(#shadow)">
-    <rect x="1175" y="585" width="120" height="85" rx="16" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/>
+    <rect x="1175" y="530" width="120" height="85" rx="16" fill="#F1F6FF" stroke="#ABC5F2" stroke-width="1.5"/>
   </g>
-  <text x="1235" y="615" text-anchor="middle" class="node-title">계좌 원장</text>
-  <text x="1235" y="639" text-anchor="middle" class="node-meta">DEBIT / CREDIT</text>
+  <text x="1235" y="560" text-anchor="middle" class="node-title">계좌 원장</text>
+  <text x="1235" y="584" text-anchor="middle" class="node-meta">DEBIT / CREDIT</text>
 
   <g filter="url(#shadow)">
-    <rect x="1085" y="705" width="160" height="78" rx="16" fill="#EAF2FF" stroke="#9AB9EE" stroke-width="1.5"/>
+    <rect x="1085" y="645" width="160" height="78" rx="16" fill="#EAF2FF" stroke="#9AB9EE" stroke-width="1.5"/>
   </g>
-  <text x="1165" y="735" text-anchor="middle" class="node-title">거래 상태 변경</text>
-  <text x="1165" y="759" text-anchor="middle" class="node-meta">TransferLedger · SUCCESS</text>
+  <text x="1165" y="675" text-anchor="middle" class="node-title">거래 상태 변경</text>
+  <text x="1165" y="699" text-anchor="middle" class="node-meta">TransferLedger · SUCCESS</text>
 
-  <path d="M370 623 H440" class="blue-line"/>
-  <path d="M660 623 H730" class="blue-line"/>
-  <path d="M940 623 H1030" class="blue-line"/>
-  <path d="M1155 628 H1175" class="gray-line"/>
-  <path d="M1235 670 V690 H1165 V705" class="blue-line"/>
-
-  <rect x="70" y="820" width="1260" height="48" rx="12" fill="#FFFFFF" stroke="#E1E5EA"/>
-  <circle cx="94" cy="844" r="5" fill="#5B82C4"/>
-  <text x="110" y="849" class="small">파란 실선: 정상 처리 경로</text>
-  <line x1="330" y1="844" x2="365" y2="844" stroke="#9AA5B1" stroke-width="1.8" stroke-dasharray="7 6"/>
-  <text x="380" y="849" class="small">회색 점선: 발행 실패·재시도 경로</text>
-  <rect x="675" y="834" width="18" height="18" rx="4" fill="#F5F8FD" stroke="#AFC6EC" stroke-dasharray="4 3"/>
-  <text x="705" y="849" class="small">연한 파란 영역: 동일 DB 트랜잭션</text>
+  <path d="M370 563 H440" class="blue-line"/>
+  <path d="M660 563 H730" class="blue-line"/>
+  <path d="M940 563 H1030" class="blue-line"/>
+  <path d="M1155 573 H1175" class="gray-line"/>
+  <path d="M1235 615 V632 H1165 V645" class="blue-line"/>
 </svg>
